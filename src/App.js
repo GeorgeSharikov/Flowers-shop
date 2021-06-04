@@ -9,7 +9,7 @@ const AppWrapper = styled.div`
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-rows: 100px 1fr 90px;
+    grid-template-rows: 230px 1fr 90px;
     grid-template-areas: 
     "header"
     "content"

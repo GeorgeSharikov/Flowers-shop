@@ -9,7 +9,7 @@ export const MainContent = styled.div`
 export const Content = (props) => {
     return (
         <MainContent>
-            a
+            
         </MainContent>
     );
 }

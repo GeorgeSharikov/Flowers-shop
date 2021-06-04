@@ -9,6 +9,7 @@ import {BrowserRouter} from "react-router-dom";
 const Global = createGlobalStyle(`
     margin: 0px;
     padding: 0px;
+    
 `)
 
 ReactDOM.render(
