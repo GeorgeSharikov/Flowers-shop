@@ -5,19 +5,22 @@ import {App} from './App';
 import reportWebVitals from './reportWebVitals';
 import  {createGlobalStyle} from 'styled-components'
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from 'react-redux'
+import { store } from './redux/store';
 
 const Global = createGlobalStyle(`
     margin: 0px;
     padding: 0px;
-    
 `)
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
         <Global />
         <App />
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
