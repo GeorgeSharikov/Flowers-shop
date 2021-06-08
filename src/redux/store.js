@@ -3,7 +3,5 @@ import { productsReducer } from "./productsReducer";
 
 
 export const store = configureStore({
-    reducer: {
-        product: productsReducer
-    },
+    reducer:  productsReducer
 })
