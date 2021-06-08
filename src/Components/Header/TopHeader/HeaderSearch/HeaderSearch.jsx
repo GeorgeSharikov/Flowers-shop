@@ -13,7 +13,6 @@ const SearchBar = styled.div`
   grid-column: 4/5;
   margin-right: 15px;
   justify-content: center;
-  position: relative;
 `
 const PhoneNumber = styled.div`
     text-align: left;
@@ -21,6 +20,9 @@ const PhoneNumber = styled.div`
     font-weight: 100;
     margin-right: 20px;
 `
+const Form = styled.form`
+    position: relative;
+` 
 const Input = styled.input`
     margin-right: 50px;
     width: 500px;
@@ -31,21 +33,27 @@ const Input = styled.input`
     padding: 15px;
     box-sizing: border-box;
     font-size: 15px;
+    :focus{
+        box-shadow:0 0 3px rgba(0,0,0,0.5);
+    }
 `
+
+
+
 const Button = styled.button`
     height: 45px;
-    width: 20px;
+    width: 40px;
     position: absolute;
     background-color: transparent;
     border: none;
     padding: 0px;
-    right:90px;
+    right:50px;
     top:3px;
     cursor: pointer;
 `
 
 
-export const HeaderMenu = (props) => {
+export const HeaderSearch = (props) => {
     return (
         <SearchBar>
                 <CallOutlined style={styles}/>
@@ -53,12 +61,12 @@ export const HeaderMenu = (props) => {
                     PHONE: <br />      
                     +7(909)-666-66-66
                 </PhoneNumber>
-                <form onClick={(e) => e.preventDefault()}>
+                <Form onClick={(e) => e.preventDefault()}>
                     <Input placeholder={'Search'} maxLength='50'/>
                     <Button>
                             <SearchOutlined />              
                     </Button>
-                </form>
+                </Form>
         </SearchBar>
     );
 }
