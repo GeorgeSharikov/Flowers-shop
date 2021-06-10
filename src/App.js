@@ -2,8 +2,8 @@ import React from "react";
 import styled from 'styled-components'
 import {Footer} from "./Components/Footer/Footer";
 import {Header} from "./Components/Header/Header";
-import {Content} from "./Components/MainContent/MainContent";
 import {Route, Switch} from "react-router-dom";
+import { About } from './Components/About/About';
 
 const AppWrapper = styled.div`
     width: 100%;
@@ -15,12 +15,20 @@ const AppWrapper = styled.div`
     "content"
     "footer";
 `
+const ContentWrapper = styled.div`
+  min-height: 100%;
+  min-width: 0px;
+  grid-area: content;
+`
 export const App = () => {
   return (
     <AppWrapper>
         <Header/>
             <Switch>
-                <Route path={'/'} render={() => <Content />}/>
+            <ContentWrapper>
+                <Route exact path={'/'} render={() => <About />}/>
+                <Route path={'/About'} render={() => <About />}/>
+                </ContentWrapper>
             </Switch>
         <Footer/>
     </AppWrapper>
