@@ -1,15 +1,16 @@
 import Slider from 'react-slick'
 import styled from 'styled-components'
-import arrow from './../../Assets/arrow.png'
+import arrowr from '../../Assets/arrow.png'
+import arrowl from '../../Assets/arrow_l.png'
 
 const StyledSlider = styled(Slider)`
     .slick-slider{
         position: relative;  
     }
     .slick-list{
-        height: 300px;
+        height: 70%;
         overflow: hidden;
-        /* background-color: red; */
+        background-color: red;
     }
     .slick-track{
         display: flex;
@@ -19,17 +20,24 @@ const StyledSlider = styled(Slider)`
         top: 50%;
         z-index: 10;
         font-size: 0;
-
+        width: 50px;
+        height: 50px;
+        border: none;
+        margin: 50px;
     }
     .slick-arrow.slick-prev{
         left: 0;
-        background: url("./../../Assets/arrow.png");
-        background-size: 50px 50px;
+        background: no-repeat url(${arrowl} );
+        background-size: 30px 30px;
     }
     .slick-arrow.slick-next{
         right: 0;
-        background: no-repeat url("https://prooriginal.ru/image/catalog/demo/brendy/photo.jpg");
-        background-size: 50px 50px;
+        background: no-repeat url(${arrowr});
+        background-size: 30px 30px;
+        
+    }
+    .slick-slide{
+        
     }
 `
 
@@ -42,7 +50,6 @@ export const About = () => {
         arrows: true,
     }
      return <div>
-    <button style={{background: "url('https://prooriginal.ru/image/catalog/demo/brendy/photo.jpg')",fontSize: '0', width: '50px', height: '50px'}}>as</button>
      <StyledSlider {...settings}>
             <div>
                 1

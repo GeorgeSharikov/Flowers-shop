@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import {CallOutlined, SearchOutlined} from '@material-ui/icons'
+import { device } from './../../../../GlobalStyledComponents/MediaQueries';
 
 const styles = {
     fontSize: 25,
@@ -24,8 +25,7 @@ const Form = styled.form`
     position: relative;
 ` 
 const Input = styled.input`
-    margin-right: 50px;
-    width: 500px;
+    width: 460px;
     height: 45px;
     border-radius: 50px;
     border: 1px black solid;
@@ -36,9 +36,10 @@ const Input = styled.input`
     :focus{
         box-shadow:0 0 3px rgba(0,0,0,0.5);
     }
+    @media ${device.smallLaptop} {
+        width: 300px;
+    }
 `
-
-
 
 const Button = styled.button`
     height: 45px;
@@ -47,13 +48,14 @@ const Button = styled.button`
     background-color: transparent;
     border: none;
     padding: 0px;
-    right:50px;
+    right:20px;
     top:3px;
     cursor: pointer;
 `
 
 
 export const HeaderSearch = (props) => {
+    console.log(`${device.smallLaptop}`)
     return (
         <SearchBar>
                 <CallOutlined style={styles}/>
