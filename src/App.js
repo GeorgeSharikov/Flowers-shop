@@ -7,12 +7,6 @@ import { About } from './Components/About/About';
 
 // 375px, 480px, 768px, 976px, 1024px, 1200
 
-// export const Container = styled.div`
-//   max-width: 1250px;
-//   margin: 0 auto;
-//   padding: 0px 20px;  
-// `
-
 const AppWrapper = styled.div`
     width: 100%;
     height: 100vh;
@@ -21,7 +15,10 @@ const AppWrapper = styled.div`
     grid-template-areas: 
     "header"
     "content"
-    "footer";
+    "footer"; 
+    @media (max-width: 580px){
+      grid-template-rows: 120px 1fr 90px;
+    }
 `
 const ContentWrapper = styled.div`
   min-height: 100%;
