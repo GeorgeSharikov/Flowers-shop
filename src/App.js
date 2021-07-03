@@ -21,7 +21,6 @@ const AppWrapper = styled.div`
     }
 `
 const ContentWrapper = styled.div`
-  min-height: 100%;
   min-width: 0px;
   grid-area: content;
 `

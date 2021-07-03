@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import  styled  from 'styled-components';
 import menu from '../../../Assets/menu-burger.svg'
-import close from '../../../Assets/cancel.svg'
 import { NavLink } from 'react-router-dom';
 
 

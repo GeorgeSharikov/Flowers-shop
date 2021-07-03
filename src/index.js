@@ -22,6 +22,8 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
 ul[class],
 ol[class],
@@ -32,6 +34,7 @@ blockquote,
 dl,
 dd {
   margin: 0;
+  padding: 0;
 }
 body {
   min-height: 100vh;
