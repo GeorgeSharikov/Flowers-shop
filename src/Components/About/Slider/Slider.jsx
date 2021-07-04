@@ -7,12 +7,8 @@ import slide2 from '../../../Assets/slide-2.png'
 import { NavLink } from 'react-router-dom'
 
 const StyledSlider = styled(Slider)`
-    .slick-slider{
-        position: relative;
-        height: 629px;
-    }
-    .slick-list{
-        height: 70%;
+    position: relative;
+    .slick-list{ 
         overflow: hidden;
     }
     .slick-track{
@@ -21,10 +17,10 @@ const StyledSlider = styled(Slider)`
     .slick-arrow{
         position: absolute;
         top: 50%;
-        z-index: 9;
+        z-index: 8;
         font-size: 0;
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         border: none;
         cursor: pointer;
     }
@@ -32,13 +28,13 @@ const StyledSlider = styled(Slider)`
         left: 0;
         background: no-repeat url(${arrowl});
         background-size: 30px 30px;
-        margin: 200px 0 0 20px;
+        margin: 0 0 0 20px;
     }   
     .slick-arrow.slick-next{
         right: 0;
         background: no-repeat url(${arrowr});
         background-size: 30px 30px;
-        margin: 200px 0 0 20px;
+        margin: 0 20px 0 0;
     }
     .slick-slide{
         
