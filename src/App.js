@@ -4,6 +4,7 @@ import {Footer} from "./Components/Footer/Footer";
 import {Header} from "./Components/Header/Header";
 import {Route, Switch} from "react-router-dom";
 import { About } from './Components/About/About';
+import {Shop} from "./Components/Shop/Shop";
 
 // 375px, 480px, 768px, 976px, 1024px, 1200
 
@@ -32,6 +33,7 @@ export const App = () => {
             <ContentWrapper>
                 <Route exact path={'/'} render={() => <About />}/>
                 <Route path={'/About'} render={() => <About />}/>
+                <Route path={'/Shop'} render={() => <Shop />}/>
                 </ContentWrapper>
             </Switch>
         <Footer/>
