@@ -41,6 +41,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  color: #666;
 }
 ul[class],
 ol[class] {

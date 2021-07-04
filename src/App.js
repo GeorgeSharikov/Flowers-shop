@@ -21,7 +21,7 @@ const AppWrapper = styled.div`
     }
 `
 const ContentWrapper = styled.div`
-  min-width: 0px;
+  min-width: 0;
   grid-area: content;
 `
 export const App = () => {
