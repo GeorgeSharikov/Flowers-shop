@@ -1,44 +1,24 @@
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom';
-;
-
-const NavBar = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 500px;
-`
-const activeClassName = "nav-item-active";
-const MenuListLink = styled(NavLink).attrs({ activeClassName })`
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-    :hover{
-        color: #9932CC;
-    }
-    &.${activeClassName} {
-    border-bottom: 1px solid #BA55D3;
-  }
-`
+import React from 'react';
+import * as s from '../HeaderStyles'
 
 export const HeaderNavbar = () => {
     return (
-        <NavBar>  
+        <s.NavBar>  
             <div>
-                <MenuListLink to='About'>ABOUT</MenuListLink>
+                <s.MenuListLink to='About'>ABOUT</s.MenuListLink>
             </div>
             <div>
-                <MenuListLink to='Shop'>SHOP</MenuListLink>
+                <s.MenuListLink to='Shop'>SHOP</s.MenuListLink>
             </div>
             <div>
-                <MenuListLink to='Gallery'>GALLERY</MenuListLink>
+                <s.MenuListLink to='Gallery'>GALLERY</s.MenuListLink>
             </div>
             <div>
-                <MenuListLink to='Blog'>BLOG</MenuListLink>
+                <s.MenuListLink to='Blog'>BLOG</s.MenuListLink>
             </div>
             <div>
-                <MenuListLink to='Delivery'>DELIVERY</MenuListLink>
+                <s.MenuListLink to='Delivery'>DELIVERY</s.MenuListLink>
             </div>
-        </NavBar>
+        </s.NavBar>
     )
 }

@@ -50,7 +50,7 @@ export const Sorting = (props) => {
     const [active, setActive] = useState(false)
     return (
         <SortingWrapper onClick={() => setActive(!active)}>
-            Sort by
+            Sort
             <span>{selectedElement}</span>
             {active
                 ? <ActiveSortingMenu>

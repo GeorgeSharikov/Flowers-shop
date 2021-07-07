@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiProducts } from './../api/api';
+import { apiProducts } from '../../api/api';
 
 export const productsReducer = createSlice({
     name: 'products',
@@ -8,7 +8,7 @@ export const productsReducer = createSlice({
     },
     reducers: {
         getAllProducts(state, {payload}){
-            state.allProductList = payload.allProductsData
+            state.allProductList = payload
         }
     }
 })

@@ -1,21 +1,14 @@
 import React from 'react';
-import styled from "styled-components";
 import {PopularProduct} from "./PopularProduct";
-
-const PopularProductsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 100px;
-`
-
+import * as s from '../../AboutStyle'
 
 export const PopularProducts = (props) => {
     return (
-        <PopularProductsWrapper>
+        <s.PopularProductsWrapper>
             <PopularProduct />
             <PopularProduct />
             <PopularProduct />
             <PopularProduct />
-        </PopularProductsWrapper>
+        </s.PopularProductsWrapper>
     );
 }
