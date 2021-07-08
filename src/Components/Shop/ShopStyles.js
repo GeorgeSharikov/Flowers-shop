@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 //SHOP
 export const ShopContentStyled = styled.div`
   padding-top: 25px;
+  padding-bottom: 100px;
 `
 
 export const ProductListStyled = styled.div`
@@ -19,27 +20,29 @@ export const ProductListStyled = styled.div`
    @media (max-width: 820px){
     grid-template-columns: repeat(2,1fr);
   }
-   @media (max-width: 450px){
+   @media (max-width: 520px){
     grid-template-columns: 1fr;
   }
 `
 
 export const ProductItemStyled = styled.div`
+margin: 0 auto;
   display: grid;
   border-bottom: 1px solid #eee;
   width: 240px;
   height: 378px;
   grid-template-rows: 272px 50px auto;
   color: black;
-  align-items: center;
-  box-sizing: content-box;
-    @media (max-width: 1100px){
-   width: auto;
+  align-content: center;
+  box-sizing: border-box;
+  &:hover{
+    border: 1px solid white;
+    box-shadow: 0 0 10px rgb(238, 238, 238);
   }
 `
 
 export const ProductImg = styled.img`
-  margin: 0 auto;
+  margin: 10px auto;
 `
 
 export const ProductPriceStyled = styled.div`

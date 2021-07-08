@@ -6,6 +6,9 @@ const Page = styled.div`
     font-size: 18px;
     color: black;
   }
+   @media(max-width: 420px){
+        margin-bottom: 8px;
+   }
 `
 
 export const PageShow = (props) => {
