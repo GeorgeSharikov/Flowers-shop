@@ -27,6 +27,9 @@ export const TopHeaderStyled = styled.div`
   @media (max-width: 580px){
       border: none;
       padding: 0;
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(4, 1fr);
   }
 `
 export const HeaderMenuStyled = styled.div`
@@ -39,12 +42,15 @@ export const HeaderMenuStyled = styled.div`
 
 //CART HEADER
 export const CartLogoStyled = styled.div`
+  grid-column: auto;
     display: flex;
     p{
       margin: 0;
     }
     justify-items: baseline;
-
+    @media(max-width: 580px){
+      grid-column: 3/4;
+    }
 `
 
 export const CartLogoLinkStyled = styled(NavLink)`
@@ -54,18 +60,19 @@ export const CartLogoLinkStyled = styled(NavLink)`
 `
 
 export const CartSupStyled = styled.sup`
+  margin-left: 10px;
     position: absolute;
-    font-size: ${props => props.width>580 ? '12px' : '16px'};
-    font-weight: 600;
-    height: ${props => props.width>580 ? '20px' : '22px'};
-    width: ${props => props.width>580 ? '20px' : '22px'};
-    line-height: ${props => props.width>580 ? '20px' : 'none'};
+    font-size: 16px;
+    font-weight:  ${props => props.width>580 ? '600' : '500'};;
+    height: ${props => props.width>580 ? '20px' : '18px'};
+    width: ${props => props.width>580 ? '20px' : '18px'};
+    line-height: 20px;
     background-color: #e55472;
     color: #fff;
     text-align: center;
     border-radius: 100%;
-    top:  ${props => props.width>580 ? '0px' : '8px'};
-    right: ${props => props.width>580 ? '7.5px' : '-7px'};
+    top:  ${props => props.width>580 ? '2px' : '10px'};
+    right: ${props => props.width>580 ? '7.5px' : '3px'};
 `
 
 export const CartPriceStyled = styled.p`
@@ -78,6 +85,9 @@ export const SearchBar = styled.div`
   display: flex;
   grid-column: 4/5;
   justify-content: ${props => props.width > 580 ? 'center' : 'right'};
+  @media (max-width: 580px){
+    grid-column: auto;
+  }
 `
 export const PhoneNumber = styled.div`
     display: flex;
@@ -147,6 +157,9 @@ export const LogoWrapper = styled.div`
   display: grid;
   grid-column: 2/3;
   margin-right: 50px;
+  @media (max-width: 580px){
+    grid-column: 1/2;
+  }
 `
 export const LogoLink = styled(NavLink)`
   height: 90px;
@@ -181,6 +194,7 @@ export const MenuListLink = styled(NavLink).attrs({ activeClassName })`
 
 //MOBILE HEADER MENU
 export const BurgerMenu = styled.div`
+    grid-column: 4/5;
     margin-top: 13px;
     width: 40px;
     height: 50px;
