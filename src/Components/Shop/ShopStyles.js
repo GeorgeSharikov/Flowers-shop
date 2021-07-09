@@ -17,16 +17,18 @@ export const ProductListStyled = styled.div`
   @media (max-width: 1100px){
     grid-template-columns: repeat(3,1fr);
   }
-   @media (max-width: 820px){
+  @media (max-width: 820px){
     grid-template-columns: repeat(2,1fr);
   }
-   @media (max-width: 520px){
+  @media (max-width: 520px){
     grid-template-columns: 1fr;
   }
 `
 
 export const ProductItemStyled = styled.div`
-margin: 0 auto;
+  position: relative;
+  background-color: #fff;
+  margin: 0 auto;
   display: grid;
   border-bottom: 1px solid #eee;
   width: 240px;
@@ -35,10 +37,51 @@ margin: 0 auto;
   color: black;
   align-content: center;
   box-sizing: border-box;
-  &:hover{
-    border: 1px solid white;
-    box-shadow: 0 0 10px rgb(238, 238, 238);
+  transition: box-shadow .2s linear;
+  
+  .product-button{
+    position: absolute;
+    display: inline-block;
+    padding: 5px 11px;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+    cursor: pointer;
+    appearance: none;
+    background-color: #61ac43;
+    border: 2px solid #61ac43;
+    border-radius: 7px;
+    right: 5px;
+    top: 50%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
+    &:hover{
+        background-color: #5da540;
+        border-color: #5da540;
+    }
   }
+  
+  .product-params{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
+    top: 2px;
+  }
+  
+  &:hover{
+    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+    border: 1px solid #eee;
+    border-radius: 7px;
+    z-index: 100;
+    .product-button, .product-params{
+       visibility: visible;
+       opacity: 1;
+    }
+
+}
 `
 
 export const ProductImg = styled.img`
@@ -74,4 +117,10 @@ export const ProductName = styled(NavLink)`
     color: #BA55D3;
     border-bottom: 1px solid #BA55D3;
   }
+`
+
+export const loadingDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  grid-column: 1/5;
 `

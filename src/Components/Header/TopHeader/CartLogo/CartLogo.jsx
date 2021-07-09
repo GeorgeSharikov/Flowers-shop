@@ -2,7 +2,7 @@ import React from 'react';
 import shoppingCard from '../../../../Assets/shopping-cart.svg'
 import * as s from "../../HeaderStyles";
 
-export const Cart = ({width}) => {
+export const CartLogo = ({width}) => {
     return (
         <s.CartLogoStyled>
             <s.CartLogoLinkStyled to={'cart'} width={width}>

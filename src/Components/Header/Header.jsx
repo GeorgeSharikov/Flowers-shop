@@ -1,7 +1,7 @@
 import React from 'react';
 import {Logo} from "./TopHeader/Logo/Logo";
 import {HeaderSearch} from "./TopHeader/HeaderSearch/HeaderSearch";
-import {Cart} from "./TopHeader/Cart/Cart";
+import {CartLogo} from "./TopHeader/CartLogo/CartLogo.jsx";
 import { HeaderNavbar } from './HeaderMenu/HeaderNavbar';
 import { useWindowDimensions } from '../../Hooks/useWindowDimensions';
 import { MobileHeaderMenu } from './HeaderMenu/MobileHeaderMenu';
@@ -15,7 +15,7 @@ export const Header = (props) => {
               <s.TopHeaderStyled width={width}>
                 <Logo />
                 <HeaderSearch width={width}/>
-                <Cart width={width}/>
+                <CartLogo width={width}/>
                 {width>580? null : <MobileHeaderMenu />} 
               </s.TopHeaderStyled>
               {width>580
