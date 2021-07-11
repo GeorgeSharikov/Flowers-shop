@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import {ProductItemButton} from "./ProductItemButton";
 
 export const ProductItem = ({name,params,price, img}) => {
+    console.log(params)
     return (
         <s.ProductItemStyled>
             <NavLink to={'Shop/:id'}>
@@ -18,9 +19,9 @@ export const ProductItem = ({name,params,price, img}) => {
             </s.ProductNameWrapper>
             <ProductItemButton />
             <div className={'product-params'}>
-                <span>{params[0]}</span>
-                <span>{params[1]}</span>
-                <span>{params[2]}</span>
+                <span>{params.height}</span>
+                <span>{params.diameter}</span>
+                <span>{params.weight}</span>
             </div>
         </s.ProductItemStyled>
     );

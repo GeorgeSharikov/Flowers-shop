@@ -13,7 +13,8 @@ export const ProductListStyled = styled.div`
   grid-template-columns: repeat(4,1fr);
   align-content: space-between;
   margin-top: 50px;
-  row-gap: 16px;
+  /* row-gap: 16px; */
+  column-gap: 36px;
   @media (max-width: 1100px){
     grid-template-columns: repeat(3,1fr);
   }
@@ -30,15 +31,15 @@ export const ProductItemStyled = styled.div`
   background-color: #fff;
   margin: 0 auto;
   display: grid;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eee;  
   width: 240px;
   height: 378px;
   grid-template-rows: 272px 50px auto;
   color: black;
   align-content: center;
   box-sizing: border-box;
+  padding: 16px 0px;
   transition: box-shadow .2s linear;
-  
   .product-button{
     position: absolute;
     display: inline-block;
@@ -65,10 +66,11 @@ export const ProductItemStyled = styled.div`
   }
   
   .product-params{
+    position: absolute;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s ease;
-    top: 2px;
+    top: 5px;
   }
   
   &:hover{
@@ -76,6 +78,8 @@ export const ProductItemStyled = styled.div`
     border: 1px solid #eee;
     border-radius: 7px;
     z-index: 100;
+    padding-bottom: 41px;
+    padding-top: 40px;
     .product-button, .product-params{
        visibility: visible;
        opacity: 1;
