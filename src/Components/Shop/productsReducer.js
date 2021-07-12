@@ -1,13 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiProducts } from '../../api/api';
 
-export const productsReducer = createSlice({
+export const slice = createSlice({
     name: 'products',
     initialState: {
         allProductList: [],
         isFetching: true
     },
     reducers: {
+        //change params structure from string to object
         getAllProducts(state, {payload}){
             let copyPayloadParams = payload.map(el => {
                 let element = el.params.split(/\n/)
@@ -21,7 +22,6 @@ export const productsReducer = createSlice({
                     weight: copyPayloadParams[i][2],
                 }
             }
-            console.log(payload)
             state.allProductList = payload
         },
         setIsFetching(state, {payload}){
@@ -29,7 +29,8 @@ export const productsReducer = createSlice({
         }
     }
 })
-export const {getAllProducts, setIsFetching} = productsReducer.actions
+export const productsReducer = slice.reducer
+export const {getAllProducts, setIsFetching} = slice.actions
 
 export const getAllProductsAsync = () => async (dispatch) => {
     const allProductsData = await apiProducts.getAllProducts()

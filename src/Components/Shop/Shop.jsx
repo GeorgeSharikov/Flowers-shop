@@ -15,6 +15,7 @@ export const Shop = (props) => {
     useEffect(() => {
         dispatch(getAllProductsAsync())
     }, [dispatch])
+
     return (
         <Container>
             <s.ShopContentStyled>
@@ -24,7 +25,7 @@ export const Shop = (props) => {
                             <img src={loading} alt={'loading'} width={'500px'} height={'500px'}/>
                         </s.loadingDiv>}
                         {productsList?.map(i => {
-                            return  <ProductItem key={i.id} name={i.name} params={i.params} price={i.price} img={i.img}/>
+                            return <ProductItem key={i.id} name={i.name} params={i.params} price={i.price} img={i.img} id={i.id}/>
                         })}
                     </s.ProductListStyled>
             </s.ShopContentStyled>

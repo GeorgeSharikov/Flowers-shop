@@ -3,25 +3,26 @@ import * as s from '../ShopStyles'
 import {NavLink} from "react-router-dom";
 import {ProductItemButton} from "./ProductItemButton";
 
-export const ProductItem = ({name,params,price, img}) => {
-    console.log(params)
+
+export const ProductItem = (props) => {
+    const {name,params,price, img} = props
     return (
         <s.ProductItemStyled>
-            <NavLink to={'Shop/:id'}>
+            <NavLink to={'/:id'}>
                 <s.ProductImg src={img} alt={'flower'} width={'240px'} height={'272px'}/>
             </NavLink>
             <s.ProductPriceStyled>
                 <s.PriceWord>Price:</s.PriceWord>
-                <s.ProductFullPriceStyled>{price}</s.ProductFullPriceStyled>
+                <s.ProductFullPriceStyled>{price}₽</s.ProductFullPriceStyled>
             </s.ProductPriceStyled>
             <s.ProductNameWrapper>
                 <s.ProductName to={'Shop/:id'}>{name}</s.ProductName>
             </s.ProductNameWrapper>
-            <ProductItemButton />
+            <ProductItemButton info={props}/>
             <div className={'product-params'}>
-                <span>{params.height}</span>
-                <span>{params.diameter}</span>
-                <span>{params.weight}</span>
+                {params.diameter && <s.DiameterParam>{params.diameter}</s.DiameterParam>}
+                {params.height && <s.HeightParam>{params.height}</s.HeightParam>}
+                {params.weight && <s.WeightParam>{params.weight}</s.WeightParam>}
             </div>
         </s.ProductItemStyled>
     );

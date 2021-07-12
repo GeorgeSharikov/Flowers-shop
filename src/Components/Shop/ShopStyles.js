@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
-
+import diameter from '../../Assets/icon-params-diameter.png'
+import weight from '../../Assets/icon-params-weight.png'
+import height from '../../Assets/icon-params-height.png'
 
 //SHOP
 export const ShopContentStyled = styled.div`
@@ -36,6 +38,7 @@ export const ProductItemStyled = styled.div`
   height: 378px;
   grid-template-rows: 272px 50px auto;
   color: black;
+  text-align: center;
   align-content: center;
   box-sizing: border-box;
   padding: 16px 0px;
@@ -64,13 +67,48 @@ export const ProductItemStyled = styled.div`
         border-color: #5da540;
     }
   }
-  
+  .product-button-active{
+    position: absolute;
+    display: inline-block;
+    padding: 5px 11px;
+    color: #61ac43;
+    font-size: 0.9rem;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid #61ac43;
+    background-color: #fff;
+    border-radius: 7px;
+    right: 5px;
+    top: 50%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s ease;
+    &:hover{
+        background-color: #eff8ec;
+        border-color: #5da540;
+    }
+ }  
   .product-params{
     position: absolute;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s ease;
     top: 5px;
+    width: 218px;
+    line-height: 24px;
+    font-size: .8em;
+    border: 1px solid #eee;
+    border-radius: 7px;
+    left: 10px;
+    span{
+      display: inline-block;
+      margin-right: .8em;
+      background-position: 0 45%;
+      background-repeat: no-repeat;
+    }
   }
   
   &:hover{
@@ -80,12 +118,27 @@ export const ProductItemStyled = styled.div`
     z-index: 100;
     padding-bottom: 41px;
     padding-top: 40px;
-    .product-button, .product-params{
+    .product-button, .product-params, .product-button-active{
        visibility: visible;
        opacity: 1;
     }
 
 }
+`
+
+export const DiameterParam = styled.span`
+  padding-left: 15px;
+  background-image: url(${diameter});
+`
+
+export const HeightParam = styled.span`
+  padding-left: 15px;
+  background-image: url(${height});
+`
+
+export const WeightParam = styled.span`
+  padding-left: 15px;
+  background-image: url(${weight});
 `
 
 export const ProductImg = styled.img`
@@ -112,6 +165,10 @@ export const ProductNameWrapper = styled.div`
   text-align: center;
 `
 
+export const ProductLinkButton = styled(NavLink)`
+  text-decoration: none;
+  color: #5da540;
+`
 export const ProductName = styled(NavLink)`
   color: black;
   text-decoration: none;
