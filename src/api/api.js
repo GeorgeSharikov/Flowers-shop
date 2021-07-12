@@ -3,7 +3,7 @@ import {database} from '../Firebase'
 export const apiProducts = {
     getAllProducts: async () => {
         try{
-            const productsList = database.ref()
+            const productsList = database.ref('products')
             const productsListData =  await productsList.get()
             return productsListData.val()
         }catch(err) {
