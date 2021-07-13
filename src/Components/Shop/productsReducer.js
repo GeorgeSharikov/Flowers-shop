@@ -5,7 +5,8 @@ export const slice = createSlice({
     name: 'products',
     initialState: {
         allProductList: [],
-        isFetching: true
+        isFetching: true,
+        chosenProduct: null
     },
     reducers: {
         //change params structure from string to object
@@ -26,16 +27,24 @@ export const slice = createSlice({
         },
         setIsFetching(state, {payload}){
             state.isFetching = payload
+        },
+        setChosenProduct(state, {payload}){
+            state.chosenProduct = payload
         }
     }
 })
 export const productsReducer = slice.reducer
-export const {getAllProducts, setIsFetching} = slice.actions
+export const {getAllProducts, setIsFetching, setChosenProduct} = slice.actions
 
 export const getAllProductsAsync = () => async (dispatch) => {
     const allProductsData = await apiProducts.getAllProducts()
     dispatch(setIsFetching(false))
     dispatch(getAllProducts(allProductsData))
+}
+
+export const getChosenProduct = (id) => async (dispatch) => {
+    const product = await apiProducts.getChosenProduct(id)
+    dispatch(setChosenProduct(product))
 }
 
 

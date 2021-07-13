@@ -30,6 +30,7 @@ export const ProductListStyled = styled.div`
 
 export const ProductItemStyled = styled.div`
   position: relative;
+  cursor: pointer;
   background-color: #fff;
   margin: 0 auto;
   display: grid;
@@ -92,6 +93,7 @@ export const ProductItemStyled = styled.div`
     }
  }  
   .product-params{
+  cursor: text;
     position: absolute;
     visibility: hidden;
     opacity: 0;
@@ -143,11 +145,13 @@ export const WeightParam = styled.span`
 
 export const ProductImg = styled.img`
   margin: 10px auto;
+  cursor: pointer;
 `
 
 export const ProductPriceStyled = styled.div`
   height: 50px;
   text-align: center;
+  cursor: text;
 `
 export const PriceWord = styled.span`
   margin-right: .4rem;
@@ -156,6 +160,7 @@ export const ProductFullPriceStyled = styled.span`
    font-size: 25.6px;
    line-height: 50px;
    vertical-align: middle;
+   
 `
 
 export const ProductNameWrapper = styled.div`
@@ -169,11 +174,15 @@ export const ProductLinkButton = styled(NavLink)`
   text-decoration: none;
   color: #5da540;
 `
-export const ProductName = styled(NavLink)`
+export const ProductName = styled.button`
   color: black;
   text-decoration: none;
   font-size: 18px;
   transition: all 0.5s ease;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
   &:hover{
     color: #BA55D3;
     border-bottom: 1px solid #BA55D3;

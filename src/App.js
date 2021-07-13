@@ -1,4 +1,5 @@
 import React from "react";
+// import {ErrorBoundary} from "./Components/ErrorBoundary/ErrorBoundary";
 import styled from 'styled-components'
 import {Footer} from "./Components/Footer/Footer";
 import {Header} from "./Components/Header/Header";

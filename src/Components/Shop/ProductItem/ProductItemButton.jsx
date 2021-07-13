@@ -8,13 +8,19 @@ export const ProductItemButton = ({info}) => {
     const {name, price, img, id} = info
     const dispatch = useDispatch()
     const isAddedToCart = useSelector(state => selectIsAddedToCart(state,id))
+
+    const clickHandler = (name, price, img, id, event) => {
+        additionProductToCart(name, price, img, id)
+        event.stopPropagation()
+    }
+
     const additionProductToCart = (name, price, img, id) => {
         if(!isAddedToCart){
             dispatch(setIsAddedToCart({id, isAdded: true}))
             dispatch(addProductToCart({name, price, img, id}))
         }
     }
-    return <button onClick={() => additionProductToCart(name, price, img, id)} className={isAddedToCart ? 'product-button-active' : 'product-button'}>
+    return <button onClick={(e) => clickHandler(name, price, img, id, e)} className={isAddedToCart ? 'product-button-active' : 'product-button'}>
         {isAddedToCart ? <s.ProductLinkButton to={'/cart'}>Go to cart</s.ProductLinkButton> : 'add to cart'}
     </button>
 }
