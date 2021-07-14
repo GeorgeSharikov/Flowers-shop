@@ -130,13 +130,13 @@ export const Button = styled.button`
     display: block;
     z-index: 10;
     height: 45px;
-    width: 40px;
+    width: 50px;
     position: absolute;
     background-color: inherit;
     border: none;
-    padding: 0 5px;
-    right:6px;
-    top: 2px;
+    padding: 0;
+    right:0px;
+    top: 4px;
     cursor: pointer;
     @media (max-width: 580px) {
        width: 50px
