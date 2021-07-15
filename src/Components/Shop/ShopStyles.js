@@ -198,15 +198,18 @@ export const loadingDiv = styled.div`
 //Modal
 export const ModalStyled = styled.div`
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  overflow: ${props => props.isActive ? 'hidden' : 'visible'};
   z-index: 1000;
   background-color: rgba(0,0,0,0.7);
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
-  align-items: center
+  align-items: center;
+  visibility: ${props => props.isActive ? 'visible' : 'hidden'};
+  opacity: ${props => props.isActive ? 1: 0};
+  transition: all 0.4s ease;
 `
 
 export const ModalBody = styled.div`
@@ -216,4 +219,24 @@ export const ModalBody = styled.div`
   height: 300px;
   border-radius: 8px;
   padding: 24px;
+`
+
+export const ModalCancelButton = styled.button`
+    top: 0;
+    right: 0;
+    background: rgba(30,30,30,.6);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    height: 44px;
+    margin: 0;
+    padding: 10px;
+    position: absolute;
+    transition: color .2s;
+    vertical-align: top;
+    visibility: inherit;
+    width: 44px;
+    color: #ccc;
 `

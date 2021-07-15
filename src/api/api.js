@@ -12,7 +12,7 @@ export const apiProducts = {
     },
     getChosenProduct: async (id) => {
         try{
-            const product = await database.ref(`products/${id}`)
+            const product = await database.ref(`products/${id-1}`)
             const productData = await product.get()
             return productData.val()
         }catch(err) {
