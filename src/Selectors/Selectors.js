@@ -26,3 +26,6 @@ export const selectIsAddedToCart = (state, id) => {
     }
 }
 
+export const selectChosenProduct = (state) => {
+    return state.products.chosenProduct
+}
