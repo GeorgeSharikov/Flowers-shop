@@ -194,3 +194,26 @@ export const loadingDiv = styled.div`
   justify-content: center;
   grid-column: 1/5;
 `
+
+//Modal
+export const ModalStyled = styled.div`
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1000;
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center
+`
+
+export const ModalBody = styled.div`
+  margin: 0 auto;
+  background-color: white;
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
+  padding: 24px;
+`
