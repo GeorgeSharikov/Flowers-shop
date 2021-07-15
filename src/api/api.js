@@ -14,7 +14,6 @@ export const apiProducts = {
         try{
             const product = await database.ref(`products/${id}`)
             const productData = await product.get()
-            console.log(productData.val())
             return productData.val()
         }catch(err) {
             console.log(err)

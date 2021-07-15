@@ -42,7 +42,7 @@ export const getAllProductsAsync = () => async (dispatch) => {
     dispatch(getAllProducts(allProductsData))
 }
 
-export const getChosenProduct = (id) => async (dispatch) => {
+export const getChosenProductAsync = (id) => async (dispatch) => {
     const product = await apiProducts.getChosenProduct(id)
     dispatch(setChosenProduct(product))
 }
