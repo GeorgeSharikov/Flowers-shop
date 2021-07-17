@@ -37,7 +37,7 @@ export const MainSlider = () => {
                     <p>Make an order for Valentine's Day from March 7 to April 23 and get a 10% discount on the entire order!</p>
                     <s.SliderButton>
                         <s.SliderLink to='/Shop'>
-                            Go To Shop
+                             Go To Shop
                         </s.SliderLink>
                     </s.SliderButton>
                 </s.SliderText>

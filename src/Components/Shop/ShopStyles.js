@@ -3,6 +3,9 @@ import {NavLink} from "react-router-dom";
 import diameter from '../../Assets/icon-params-diameter.png'
 import weight from '../../Assets/icon-params-weight.png'
 import height from '../../Assets/icon-params-height.png'
+import Slider from "react-slick";
+import arrow from "../../Assets/modal-next.svg";
+import heightModal from '../../Assets/height-modal.svg'
 
 //SHOP
 export const ShopContentStyled = styled.div`
@@ -15,7 +18,6 @@ export const ProductListStyled = styled.div`
   grid-template-columns: repeat(4,1fr);
   align-content: space-between;
   margin-top: 50px;
-  /* row-gap: 16px; */
   column-gap: 36px;
   @media (max-width: 1100px){
     grid-template-columns: repeat(3,1fr);
@@ -197,15 +199,16 @@ export const loadingDiv = styled.div`
 
 //Modal
 export const ModalStyled = styled.div`
+  min-width: 0;
+  display: flex;
   width: 100%;
   height: 100%;
-  overflow: ${props => props.isActive ? 'hidden' : 'visible'};
+  overflow: ${props => props.isActive ? 'visible' : 'hidden'};
   z-index: 1000;
   background-color: rgba(0,0,0,0.7);
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
   align-items: center;
   visibility: ${props => props.isActive ? 'visible' : 'hidden'};
   opacity: ${props => props.isActive ? 1: 0};
@@ -215,10 +218,10 @@ export const ModalStyled = styled.div`
 export const ModalBody = styled.div`
   margin: 0 auto;
   background-color: white;
-  width: 300px;
-  height: 300px;
   border-radius: 8px;
   padding: 24px;
+  display: flex;
+  max-width:840px;
 `
 
 export const ModalCancelButton = styled.button`
@@ -239,4 +242,175 @@ export const ModalCancelButton = styled.button`
     visibility: inherit;
     width: 44px;
     color: #ccc;
+`
+//Modal Slider
+export const StyledSlider = styled(Slider)`
+    position: relative;
+    .slick-list{ 
+              width: 480px;
+        height: 640px;
+        overflow: hidden;
+    }
+    .slick-track{
+        display: flex;
+        cursor: grab;
+    }
+    .slick-arrow{
+        position: absolute;
+        top: 320px;
+        z-index: 8;
+        font-size: 0;
+        cursor: pointer;
+         border: 3px solid #fff;
+        width: 42px;
+        height: 42px;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #aaa;
+        border-radius: 50%;
+        box-sizing: content-box;
+    }
+    
+    .slick-disabled {
+        opacity: 0;
+        pointer-events:none;
+    }
+    
+    .slick-arrow.slick-prev{
+        left: 0;
+        transform: rotate(180deg);
+        margin: 0 0 0 20px;
+        background: rgba(122,122,122,.5) url(${arrow}) no-repeat;
+        background-size: 24px 24px;
+        background-position: 10px 9px;
+    }   
+    .slick-arrow.slick-next{
+        right: 0;
+        background: rgba(122,122,122,.5) url(${arrow}) no-repeat ;
+        background-size: 24px 24px;
+        margin: 0 20px 0 0;
+        background-position: 10px 9px;
+    }
+
+    .slick-dots{
+      display: flex !important;
+      position: absolute;
+      top: 5px;
+     justify-content: center;
+      font-size: 0;
+      width: 100%;
+      li button{
+        border-radius: 20px;
+        background: #888;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        border: 2px solid #fff;
+        opacity: .2;
+      }
+      li.slick-active button{
+            opacity: 1;
+      }
+    }
+`
+
+export const HeightModal = styled.div`
+    position: absolute;
+    background: url(${heightModal}) no-repeat 0 0;
+    background-size: 130px 9px;
+    background-position-y: 4px;
+    width: 130px;
+    height: 16px;
+    font-size: 15px;
+    line-height: 16px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 1002;
+    box-sizing: content-box;
+   transform: rotate(270deg);
+   left: -50px;
+   top: 50%;
+`
+
+export const DiameterModal = styled.div`
+    position: absolute;
+    background: url(${heightModal}) no-repeat 0 0;
+    background-size: 130px 9px;
+    background-position-y: 4px;
+    width: 130px;
+    height: 16px;
+    font-size: 15px;
+    line-height: 16px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 10020;
+    box-sizing: content-box;
+    top: 600px;
+    left: 168px;
+`
+
+export const ModalContent = styled.aside`
+  color: #222;
+  margin-left: 20px;
+
+`
+
+export const TopModalContent = styled.div`
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    h1{
+    line-height: 1;
+    font-size: 25px;
+    margin-top: .2em;
+    margin-bottom: 17.500px;
+  }
+  p{
+    font-size: 18px;
+  }
+`
+
+export const BottomModalContent = styled.div`
+  p{
+  font-size: 17px;
+  }
+`
+
+export const ProductPriceModal = styled(ProductPriceStyled)`
+  text-align: left;
+`
+
+export const PriceWordModal = styled(PriceWord)`
+  font-size: 25px;
+`
+
+export const ProductFullPriceModal = styled(ProductFullPriceStyled)`
+  font-size: 34px;
+`
+
+export const ButtonModalCart = styled.button`
+    border-radius: 7px;
+    margin-top: 15px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    padding: 8px 30px;
+    background-color: ${props => props.isAddedToCart ? '#fff' : '#e55472'};
+    border: ${props => props.isAddedToCart ? '2px solid #5da540' : '2px solid #e55472'};  
+    cursor: pointer;
+    color: ${props => props.isAddedToCart ? '#e55472' : 'white'};
+    &:hover{
+        background-color: ${props => props.isAddedToCart ? '#eff8ec' : 'hsl(348,74%,58%)'} ;
+      border: ${props => props.isAddedToCart ? '2px solid #5da540' : '2px solid hsl(348,74%,58%)'} ;
+    }
+`
+
+export const ProductLinkButtonModal = styled(ProductLinkButton)`
+  display: block;
+  width: 100%;
 `

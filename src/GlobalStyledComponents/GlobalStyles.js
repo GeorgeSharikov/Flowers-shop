@@ -35,6 +35,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   color: #666;
+  overflow-y: hidden;
 }
 body[style*="overflow: hidden"] {
   margin-right: 17px;

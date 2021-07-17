@@ -1,25 +1,24 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import * as s from '../ShopStyles'
 import {ProductItemButton} from "./ProductItemButton";
 import {useDispatch} from "react-redux";
 import { ProductItemModal } from './ProductItemModal/ProductItemModal';
-import { getChosenProductAsync } from './../productsReducer';
+import { getChosenProductAsync } from '../productsReducer';
 
 
 export const ProductItem = (props) => {
     const {name,params,price, img, id} = props
     const [isActive, setIsActive] = useState(false)
-   
+
     const dispatch = useDispatch()
 
     const getChosenProduct = async (id) => {
        await dispatch(getChosenProductAsync(id))
-        setIsActive(true)
+       setIsActive(true)
     }
-    console.log(isActive)
     return (
         <>
-            <s.ProductItemStyled onClick={() => getChosenProduct(id)}>
+            <s.ProductItemStyled onClick={() => getChosenProduct(id)} >
                 <s.ProductImg src={img} alt={'flower'} width={'240px'} height={'272px'}/>
                 <s.ProductPriceStyled onClick={(e) => e.stopPropagation()}>
                     <s.PriceWord>Price:</s.PriceWord>

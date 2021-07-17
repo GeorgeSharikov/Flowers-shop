@@ -20,3 +20,45 @@ export const apiProducts = {
         }
     }
 }
+
+export const SortsMethods = {
+    popularitySort(products){
+        return products
+    },
+    priceHighToLow(products){
+        let productCopy = [...products]
+        productCopy.forEach((i, index) => {
+            i.price = Number(i.price.split('').filter(i => i!==' ').join(''))
+            console.log(i)
+        })
+        console.log(productCopy)
+       return productCopy.sort((a,b) =>  {
+            return a.price - b.price
+        }).reverse()
+
+    },
+    priceLowToHigh(products){
+        let productCopy = [...products]
+        productCopy.forEach((i, index) => {
+            i.price = Number(i.price.split('').filter(i => i!==' ').join(''))
+        })
+        return productCopy.sort((a,b) => {
+            return a.price - b.price
+        })
+    },
+}
+
+const a = [
+    {price: 300, a: 2},
+    {price: 400, a: 2},
+    {price: 1, a: 2},
+    {price: 56, a: 2},
+]
+
+const sortt = (a) => {
+    return a.sort((a,b) => {
+        return a.price - b.price
+    }).reverse()
+
+}
+console.log(sortt(a))

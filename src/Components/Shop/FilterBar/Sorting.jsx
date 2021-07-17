@@ -1,5 +1,9 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styled from "styled-components";
+import {useClickOutside} from "../../../Hooks/useClickOutside";
+import {useDispatch, useSelector} from "react-redux";
+import {selectAllProduct, selectCurrentCategory} from "../../../Selectors/Selectors";
+import {setSortByHighPRice, setSortByLowPRice, setSortByPopularity} from "../productsReducer";
 
 const SortingWrapper = styled.div`
   font-weight: 600;
@@ -46,18 +50,24 @@ const SortListItem = styled.li`
   
 `
 export const Sorting = (props) => {
-    const [selectedElement, setSelectedElement] = useState('Popularity')
     const [active, setActive] = useState(false)
+
+    const dispatch = useDispatch()
+    const currentCategory = useSelector(state => selectCurrentCategory(state))
+    const products = useSelector(state => selectAllProduct(state))
+
+    const ref = useRef()
+    useClickOutside(ref, () => setActive(false))
     return (
-        <SortingWrapper onClick={() => setActive(!active)}>
+        <SortingWrapper onClick={() => setActive(!active)} ref={ref}>
             Sort by
-            <span>{selectedElement}</span>
+            <span>{currentCategory}</span>
             {active
                 ? <ActiveSortingMenu>
                     <SortList>
-                        <SortListItem onClick={ () => setSelectedElement('Popularity')}>Popularity</SortListItem>
-                        <SortListItem onClick={() => setSelectedElement('Price: high to low')}>Price: high to low</SortListItem>
-                        <SortListItem onClick={() => setSelectedElement('Price: low to high')}>Price: low to high</SortListItem>
+                        <SortListItem onClick={ () => dispatch(setSortByPopularity({products}))}>Popularity</SortListItem>
+                        <SortListItem onClick={() => dispatch(setSortByHighPRice({products}))}>Price: high to low</SortListItem>
+                        <SortListItem onClick={() => dispatch(setSortByLowPRice({products}))}>Price: low to high</SortListItem>
                     </SortList>
                 </ActiveSortingMenu>
                 : null}
