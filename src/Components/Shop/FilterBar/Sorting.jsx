@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useClickOutside} from "../../../Hooks/useClickOutside";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAllProduct, selectCurrentCategory} from "../../../Selectors/Selectors";
-import {setSortByHighPRice, setSortByLowPRice, setSortByPopularity} from "../productsReducer";
+import {getAllProductsAsync, setSortByHighPRice, setSortByLowPRice, setSortByPopularity} from "../productsReducer";
 
 const SortingWrapper = styled.div`
   font-weight: 600;
@@ -65,7 +65,7 @@ export const Sorting = (props) => {
             {active
                 ? <ActiveSortingMenu>
                     <SortList>
-                        <SortListItem onClick={ () => dispatch(setSortByPopularity({products}))}>Popularity</SortListItem>
+                        <SortListItem onClick={ () => dispatch(getAllProductsAsync())}>Popularity</SortListItem>
                         <SortListItem onClick={() => dispatch(setSortByHighPRice({products}))}>Price: high to low</SortListItem>
                         <SortListItem onClick={() => dispatch(setSortByLowPRice({products}))}>Price: low to high</SortListItem>
                     </SortList>

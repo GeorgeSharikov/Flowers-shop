@@ -16,13 +16,14 @@ export const ProductItem = (props) => {
        await dispatch(getChosenProductAsync(id))
        setIsActive(true)
     }
+   const productPrice = typeof price === 'string' ? `${price} ₽` : price.toLocaleString('ru', {style: 'currency', currency: 'RUB', maximumFractionDigits: 0})
     return (
         <>
             <s.ProductItemStyled onClick={() => getChosenProduct(id)} >
                 <s.ProductImg src={img} alt={'flower'} width={'240px'} height={'272px'}/>
                 <s.ProductPriceStyled onClick={(e) => e.stopPropagation()}>
                     <s.PriceWord>Price:</s.PriceWord>
-                    <s.ProductFullPriceStyled>{price}₽</s.ProductFullPriceStyled>
+                    <s.ProductFullPriceStyled>{productPrice}</s.ProductFullPriceStyled>
                 </s.ProductPriceStyled>
                 <s.ProductNameWrapper>
                     <s.ProductName>{name}</s.ProductName>

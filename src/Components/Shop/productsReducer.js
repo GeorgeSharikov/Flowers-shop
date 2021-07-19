@@ -9,8 +9,8 @@ export const slice = createSlice({
         chosenProduct: null,
         sortCategories: {
             popularity: 'Popularity',
+            priceHighToLow: 'Price: high to low',
             priceLowToHigh: 'Price: low to high',
-            priceHighToLow: 'Price: high to low'
         },
         currentSortCategory: null
     },
@@ -33,7 +33,6 @@ export const slice = createSlice({
             if(!state.currentSortCategory){
                 state.currentSortCategory = state.sortCategories.popularity
             }
-            debugger
         },
 
         setIsFetching(state, {payload}){
@@ -53,28 +52,25 @@ export const slice = createSlice({
             state.chosenProduct = payload
         },
 
-        setSortByPopularity(state, {payload}){
-            state.currentSortCategory = state.sortCategories.popularity
-            state.allProductList = sortsMethods.popularitySort(payload.products)
+        setSortByHighPRice(state, {payload}){
+            state.currentSortCategory = state.sortCategories.priceHighToLow
+            state.allProductList = sortsMethods.priceHighToLow(payload.products)
         },
 
         setSortByLowPRice(state, {payload}){
             state.currentSortCategory = state.sortCategories.priceLowToHigh
             state.allProductList = sortsMethods.priceLowToHigh(payload.products)
         },
-
-        setSortByHighPRice(state, {payload}){
-            state.currentSortCategory = state.sortCategories.priceHighToLow
-            state.allProductList = sortsMethods.priceHighToLow(payload.products)
-        },
     }
 })
 export const productsReducer = slice.reducer
 export const {getAllProducts, setIsFetching, setChosenProduct, setSortByPopularity, setSortByLowPRice, setSortByHighPRice} = slice.actions
 
-export const getAllProductsAsync = () => async (dispatch) => {
+export const getAllProductsAsync = () => async (dispatch, getState) => {
     const allProductsData = await apiProducts.getAllProducts()
-    dispatch(setIsFetching(false))
+    if(getState().products.allProductList.length===0){
+        dispatch(setIsFetching(false))
+    }
     dispatch(getAllProducts(allProductsData))
 }
 
