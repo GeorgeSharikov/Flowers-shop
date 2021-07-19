@@ -21,7 +21,8 @@ const Product = styled.div`
   cursor: pointer;
 `
 
-export const PopularProduct = (props) => {
+export const PopularProduct = ({info}) => {
+    console.log(info)
     return (
             <ProductLink to={'Shop'}>
                 <Product>
