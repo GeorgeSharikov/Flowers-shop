@@ -33,3 +33,7 @@ export const selectChosenProduct = (state) => {
 export const selectCurrentCategory = (state) => {
     return state.products.currentSortCategory
 }
+
+export const selectStepScroll = (state) => {
+    return state.products.stepScroll
+}

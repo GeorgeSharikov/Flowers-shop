@@ -12,7 +12,8 @@ export const slice = createSlice({
             priceHighToLow: 'Price: high to low',
             priceLowToHigh: 'Price: low to high',
         },
-        currentSortCategory: null
+        currentSortCategory: null,
+        stepScroll: 8
     },
     reducers: {
         //change params structure from string to object
@@ -61,10 +62,18 @@ export const slice = createSlice({
             state.currentSortCategory = state.sortCategories.priceLowToHigh
             state.allProductList = sortsMethods.priceLowToHigh(payload.products)
         },
+
+        setStepScroll(state, {payload}){
+            if(payload){
+                state.stepScroll+=8
+            }else{
+                state.stepScroll=8
+            }
+        }
     }
 })
 export const productsReducer = slice.reducer
-export const {getAllProducts, setIsFetching, setChosenProduct, setSortByPopularity, setSortByLowPRice, setSortByHighPRice} = slice.actions
+export const {getAllProducts, setIsFetching, setChosenProduct, setSortByPopularity, setSortByLowPRice, setSortByHighPRice, setStepScroll} = slice.actions
 
 export const getAllProductsAsync = () => async (dispatch, getState) => {
     const allProductsData = await apiProducts.getAllProducts()

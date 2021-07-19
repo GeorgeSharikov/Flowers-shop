@@ -24,7 +24,7 @@ export const apiProducts = {
 export const SortsMethods = {
     priceHighToLow(products){
         let productCopy = products.map((i, index) => {
-            const newPrice = Number(i.price.split('').filter(i => i!==' ').join(''))
+            const newPrice = typeof i.price === 'string' ? Number(i.price.split('').filter(i => i!==' ').join('')) : i.price
             return {...i, price: newPrice}
         })
        return productCopy.sort((a,b) =>  {
@@ -33,7 +33,7 @@ export const SortsMethods = {
     },
     priceLowToHigh(products){
         let productCopy = products.map((i) => {
-            const newPrice = Number(i.price.split('').filter(i => i!==' ').join(''))
+            const newPrice = typeof i.price === 'string' ? Number(i.price.split('').filter(i => i!==' ').join('')) : i.price
             return {...i, price: newPrice}
         })
        return  productCopy.sort((a,b) => {
