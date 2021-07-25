@@ -15,7 +15,7 @@ export const ModalSlider = ({product}) => {
                 <div>
                     <img src={product.largePhoto} alt={'flower'}/>
                     <s.HeightModal>{product.params?.height}</s.HeightModal>
-                    <s.DiameterModal>Ø{product.params?.diameter}</s.DiameterModal>
+                    <s.DiameterModal>Ø {product.params?.diameter}</s.DiameterModal>
                 </div>
                 {product.photos?.map((i, index) => {
                     return <img key={index} src={i} alt={'flower'}/>
