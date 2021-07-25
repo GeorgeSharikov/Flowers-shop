@@ -37,3 +37,7 @@ export const selectCurrentCategory = (state) => {
 export const selectStepScroll = (state) => {
     return state.products.stepScroll
 }
+
+export const selectIsModalActive = (state) => {
+    return state.products.isModalActive
+}
