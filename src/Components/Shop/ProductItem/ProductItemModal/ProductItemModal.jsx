@@ -2,18 +2,18 @@ import React from 'react'
 import { PortalModal } from '../../../../Hoc/PortalModal/PortalModal'
 import * as s from '../../ShopStyles'
 import { selectChosenProduct } from '../../../../Selectors/Selectors';
-import { useSelector } from 'react-redux';
 import {ProductModalButton} from "./ProductModalButton";
 import {ProductModalBody} from "./ProductModalBody";
+import {useSelector} from "react-redux";
 
-export const ProductItemModal = ({setIsActive, isActive}) => {
+export const ProductItemModal = ({ setIsActive, isActive, productLength}) => {
     const product = useSelector(state => selectChosenProduct(state)) || {}
 
     return(
         <PortalModal domNode={document.body} isActive={isActive}>
                 <s.ModalStyled isActive={isActive}>
                     <ProductModalButton setIsActive={setIsActive}/>
-                    <ProductModalBody product={product} setIsActive={setIsActive}/>
+                    <ProductModalBody product={product} setIsActive={setIsActive} isActive={isActive} productLength={productLength}/>
                 </s.ModalStyled>
         </PortalModal>
 

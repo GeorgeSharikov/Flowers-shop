@@ -1,12 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {FilterBar} from "./FilterBar/FilterBar";
 import {Container} from "../../GlobalStyledComponents/GlobalComponents";
 import {useDispatch, useSelector} from "react-redux";
 import * as s from './ShopStyles'
-import {getAllProductsAsync, setStepScroll} from "./productsReducer";
-import {selectAllProduct, selectCurrentCategory, selectIsFetching, selectStepScroll} from "../../Selectors/Selectors";
+import {getAllProductsAsync, setModalActive, setStepScroll} from "./productsReducer";
+import {
+    selectAllProduct,
+    selectCurrentCategory,
+    selectIsFetching,
+    selectIsModalActive,
+    selectStepScroll
+} from "../../Selectors/Selectors";
 import {ProductItem} from "./ProductItem/ProductItem";
 import loading from '../../Assets/loading.gif'
+import {ProductItemModal} from "./ProductItem/ProductItemModal/ProductItemModal";
 
 export const Shop = (props) => {
     const dispatch = useDispatch()
@@ -14,23 +21,31 @@ export const Shop = (props) => {
     const isFetching = useSelector(state => selectIsFetching(state))
     const currentSortCategory = useSelector(state => selectCurrentCategory(state))
     const step = useSelector(state => selectStepScroll(state))
+    const isActive = useSelector(state => selectIsModalActive(state))
+
     const [totalNumber] = useState(24)
+
     const isMounted = useRef(false);
 
-    const scrollHandler = (e) => {
+
+    const setIsActive = (isActive) => {
+        dispatch(setModalActive(isActive))
+    }
+
+    const scrollHandler = useCallback((e) => {
         if(window.innerHeight - (e.target.documentElement.scrollTop - e.target.documentElement.scrollHeight) < 1748.2000122070312 && step<=totalNumber){
             dispatch(setStepScroll( true))
         }
-    }
+    }, [dispatch, step, totalNumber])
+
 
     useEffect(() => {
         if(isMounted.current){
-            console.log('loh')
             dispatch(setStepScroll(false))
         }else{
             isMounted.current = true
         }
-    }, [currentSortCategory])
+    }, [currentSortCategory, dispatch])
 
     useEffect(() => {
         if(productsList.length === 0 ){
@@ -40,8 +55,7 @@ export const Shop = (props) => {
         return () => {
             document.removeEventListener('scroll', scrollHandler)
         }
-        //eslint-disable-next-line no-use-before-define
-    }, [dispatch])
+    }, [dispatch, productsList.length, scrollHandler])
     return (
         <Container>
             <s.ShopContentStyled>
@@ -51,10 +65,11 @@ export const Shop = (props) => {
                             <img src={loading} alt={'loading'} width={'500px'} height={'500px'}/>
                         </s.loadingDiv>}
                         {productsList.slice(0, step).map(i => {
-                            return <ProductItem key={i.id} name={i.name} params={i.params} price={i.price} img={i.img} id={i.id}/>
+                            return <ProductItem key={i.id} name={i.name} params={i.params} price={i.price} img={i.img} id={i.id} setIsActive={setIsActive}/>
                         })}
                     </s.ProductListStyled>
             </s.ShopContentStyled>
+            <ProductItemModal setIsActive={setIsActive} isActive={isActive} productLength={productsList.slice(0, step).length}/>
         </Container>
     );
 }

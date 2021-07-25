@@ -1,20 +1,17 @@
-import React, { useState} from 'react';
+import React from 'react';
 import * as s from '../ShopStyles'
 import {ProductItemButton} from "./ProductItemButton";
 import {useDispatch} from "react-redux";
-import { ProductItemModal } from './ProductItemModal/ProductItemModal';
 import { getChosenProductAsync } from '../productsReducer';
 
 
 export const ProductItem = (props) => {
     const {name,params,price, img, id} = props
-    const [isActive, setIsActive] = useState(false)
 
     const dispatch = useDispatch()
 
     const getChosenProduct = async (id) => {
        await dispatch(getChosenProductAsync(id))
-       setIsActive(true)
     }
    const productPrice = typeof price === 'string' ? `${price} ₽` : price.toLocaleString('ru', {style: 'currency', currency: 'RUB', maximumFractionDigits: 0})
     return (
@@ -35,7 +32,6 @@ export const ProductItem = (props) => {
                     {params.weight && <s.WeightParam>{params.weight}</s.WeightParam>}
                 </div>
             </s.ProductItemStyled>
-            <ProductItemModal setIsActive={setIsActive} isActive={isActive}/>
         </>
     );
 }
