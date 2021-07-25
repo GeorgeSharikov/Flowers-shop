@@ -10,7 +10,7 @@ export const PopularProducts = (props) => {
     const products = useSelector(state => selectAllProduct(state))
     useEffect(() => {
         !products.length && dispatch(getAllProductsAsync())
-    }, [dispatch])
+    }, [dispatch, products.length ])
     return (
         <s.PopularProductsWrapper>
             {products.slice(0, 4).map((i, index) => {
