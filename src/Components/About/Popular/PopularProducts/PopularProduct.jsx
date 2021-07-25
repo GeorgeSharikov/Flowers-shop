@@ -1,33 +1,20 @@
 import React from 'react';
-import styled from "styled-components";
-import {NavLink} from "react-router-dom";
-
-
-const ProductLink = styled(NavLink)`
-  text-decoration: none;
-  color: white;
-  transition: all 0.5s ease;
-  &:hover{
-    background-color: rgba(0,0,0, 0.8);
-  }
-`
-const Product = styled.div`
-  display: flex;
-   justify-content: center;
-  align-items: center;
-  width: 270px;
-  height: 299px;
-  border: 1px solid black;
-  cursor: pointer;
-`
+import * as s from '../../AboutStyle'
 
 export const PopularProduct = ({info}) => {
-    console.log(info)
+    const {img} = info
+
+    const setScroll = () => {
+        window.scrollTo({top: 0})
+    }
     return (
-            <ProductLink to={'Shop'}>
-                <Product>
-                   Go To Shop
-                </Product>
-            </ProductLink>
+            <s.ProductCart>
+                <s.Product>
+                  <img src={img} alt={'popular flower'} className={'img'}/>
+                </s.Product>
+                <button className={'btn'} onClick={setScroll}>
+                    <s.ProductLink to={'/Shop'}>Go to shop</s.ProductLink>
+                </button>
+            </s.ProductCart>
     );
 }

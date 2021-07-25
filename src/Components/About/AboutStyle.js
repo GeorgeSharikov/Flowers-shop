@@ -122,7 +122,78 @@ export const PopularTittle = styled.h1`
 `
 
 export const PopularProductsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4 ,1fr);
+  justify-items: center;
+  grid-gap: 25px;
   margin-bottom: 100px;
+  @media(max-width: 1180px){
+    grid-template-columns: repeat(2 ,1fr);
+  }
+   @media(max-width: 672px){
+  
+    grid-template-columns: repeat(2 ,1fr);
+  }
+`
+
+
+export const ProductCart = styled.div`
+ @media(max-width: 672px){
+    width: 200px;
+  }
+  text-decoration: none;
+  color: white;
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 100;
+  .btn{
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 7px;
+    display: block;
+    box-sizing: border-box;
+    width: 200px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    background-color: #e55472;
+    border: 2px solid #e55472;
+    cursor: pointer;
+    color: white;
+    position:absolute;
+    top: 146px;
+    left: 21.5px;
+    transition: all 0.5s ease;
+    &:hover{
+        background-color: hsl(348,74%,58%);
+        border: 2px solid hsl(348,74%,58%);
+    }
+  }
+   .img{
+      transition: all 0.5s ease;
+   }
+  &:hover{
+    .img{
+      opacity: 0.3;
+    }
+    .btn{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+`
+export const Product = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
+`
+
+export const ProductLink = styled(NavLink)`
+   display: block;
+   width: 100%;
+  text-decoration: none;
+  color: white;
+   padding: 8px 30px;
 `
