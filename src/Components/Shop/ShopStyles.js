@@ -220,8 +220,13 @@ export const ModalBody = styled.div`
   background-color: white;
   border-radius: 8px;
   padding: 24px;
-  display: flex;
   max-width:840px;
+  display: grid;
+  grid-template-rows: 1fr 33px;
+`
+
+export const ModalBodyTopContent = styled.div`
+  display: flex;
 `
 
 export const ModalCancelButton = styled.button`
@@ -413,4 +418,67 @@ export const ButtonModalCart = styled.button`
 export const ProductLinkButtonModal = styled(ProductLinkButton)`
   display: block;
   width: 100%;
+`
+
+
+export const ToggleModal = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+`
+
+//
+// back
+
+export const ToggleButtonNext = styled.button`
+  width: 160px;
+    height: 43px;
+    line-height: 41px;
+    background-color: #fafafa;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    background-size: 24px auto;
+    border-radius: 7px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    font-size: 17px;
+    cursor: pointer;
+    border: 0;
+    padding-right: 40px;
+    background-image: url(https://www.flower-shop.ru/img/icon-forward-edit.png);
+    background-position: 124px 50%;
+    text-align: right;
+     &:hover{
+        background-color: #f5f5f5;
+    }
+`
+
+export const ToggleButtonPrev = styled.button`
+    width: 160px;
+    height: 43px;
+    line-height: 41px;
+    background-color: #fafafa;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    background-size: 24px auto;
+    border-radius: 7px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    font-size: 17px;
+    cursor: pointer;
+    border: 0;
+    padding-left: 40px;
+    background-image: url(https://www.flower-shop.ru/img/icon-back.png);
+    background-position: 12px 50%;
+    text-align: left;
+    &:hover{
+        background-color: #f5f5f5;
+    }
 `
