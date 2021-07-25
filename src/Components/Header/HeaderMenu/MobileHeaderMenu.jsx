@@ -27,7 +27,7 @@ export const MobileHeaderMenu = (props) => {
                     <s.MobileMenuListLink to='Blog' onClick={() => setIsActive(false)}>BLOG</s.MobileMenuListLink>
                 </s.MenuListLinkDiv>
                 <s.MenuListLinkDiv>
-                    <s.MobileMenuListLink to='Delivery' onClick={() => setIsActive(false)}>DELIVERY</s.MobileMenuListLink>
+                    <s.MobileMenuListLink to='Help' onClick={() => setIsActive(false)}>Help</s.MobileMenuListLink>
                 </s.MenuListLinkDiv>
                 </s.LinkList>
         </div>

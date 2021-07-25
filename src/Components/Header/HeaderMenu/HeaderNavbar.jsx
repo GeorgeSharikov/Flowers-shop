@@ -17,7 +17,7 @@ export const HeaderNavbar = () => {
                 <s.MenuListLink to='Blog'>BLOG</s.MenuListLink>
             </div>
             <div>
-                <s.MenuListLink to='Delivery'>DELIVERY</s.MenuListLink>
+                <s.MenuListLink to='Help'>Help</s.MenuListLink>
             </div>
         </s.NavBar>
     )

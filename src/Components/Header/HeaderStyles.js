@@ -151,6 +151,35 @@ export const SearchIcon = styled.div`
     }
 `
 
+export const SearchList = styled.ul`
+    position: absolute;
+    top: 48px;
+    left: 5%;
+    width: 90%;
+    background-color: white;
+    padding: 0;
+    list-style: none;
+    border-radius: 7px;
+    border: 1px solid #eee;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    z-index: 100;
+    li:nth-child(odd) {
+      background-color: #fafafa;
+    }
+    li{
+        border-bottom: 1px solid #eee;
+        box-sizing: border-box;
+        cursor: pointer;
+        line-height: 1.3;
+        padding: 7px 7px 9px;
+        width: 100%;
+    }
+`
+
+export const SearchListLink = styled.div`
+  display: flex;
+`
 
 //LOGO HEADER
 export const LogoWrapper = styled.div`
