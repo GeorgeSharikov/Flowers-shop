@@ -13,7 +13,8 @@ export const slice = createSlice({
             priceLowToHigh: 'Price: low to high',
         },
         currentSortCategory: null,
-        stepScroll: 8
+        stepScroll: 8,
+        isModalActive: false
     },
     reducers: {
         //change params structure from string to object
@@ -69,11 +70,20 @@ export const slice = createSlice({
             }else{
                 state.stepScroll=8
             }
+        },
+        setModalActive(state, {payload}){
+            state.isModalActive = payload
         }
     }
 })
 export const productsReducer = slice.reducer
-export const {getAllProducts, setIsFetching, setChosenProduct, setSortByPopularity, setSortByLowPRice, setSortByHighPRice, setStepScroll} = slice.actions
+export const {getAllProducts,
+    setIsFetching,
+    setChosenProduct,
+    setSortByLowPRice,
+    setSortByHighPRice,
+    setStepScroll,
+    setModalActive} = slice.actions
 
 export const getAllProductsAsync = () => async (dispatch, getState) => {
     const allProductsData = await apiProducts.getAllProducts()
@@ -86,6 +96,7 @@ export const getAllProductsAsync = () => async (dispatch, getState) => {
 export const getChosenProductAsync = (id) => async (dispatch) => {
     const product = await apiProducts.getChosenProduct(id)
     dispatch(setChosenProduct(product))
+    dispatch(setModalActive(true))
 }
 
 
