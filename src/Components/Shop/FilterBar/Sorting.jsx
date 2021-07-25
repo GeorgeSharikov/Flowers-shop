@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useClickOutside} from "../../../Hooks/useClickOutside";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAllProduct, selectCurrentCategory} from "../../../Selectors/Selectors";
-import {getAllProductsAsync, setSortByHighPRice, setSortByLowPRice, setSortByPopularity} from "../productsReducer";
+import {getAllProductsAsync, setSortByHighPRice, setSortByLowPRice} from "../productsReducer";
 
 const SortingWrapper = styled.div`
   font-weight: 600;
