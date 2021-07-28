@@ -482,3 +482,54 @@ export const ToggleButtonPrev = styled.button`
         background-color: #f5f5f5;
     }
 `
+
+//Rating
+export const Start = styled.div`
+display: flex;
+align-items: baseline;
+    position: absolute;
+    right: 3%;
+    top: 63%;
+    &:not(:checked)>input {
+      display: none;
+    }
+    
+    &:not(:checked)>label {
+      width: 40px;
+      cursor: pointer;
+      font-size: 30px;
+      color: lightgrey;
+      text-align: left;
+      line-height: 1;
+    }
+    
+    &:not(:checked)>label:before {
+      content: '★';
+      color: #fde16d;
+    }
+    span{
+      font-size: 20px;
+      line-height: 1;
+      position: absolute;
+      right: 43px;
+      top: 6px;
+    }
+`
+
+//Modal Rate
+export const ModalRate = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+  span{
+    margin-left:15px;
+    font-size: 30px;
+  }
+`
+
+export const Rating = styled.div`
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+`
