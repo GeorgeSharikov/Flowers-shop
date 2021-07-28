@@ -18,7 +18,7 @@ export const slice = createSlice({
                 let priceCopy = state.productsInfo[id].starterPrice
                 state.productsInfo[id].price = count*priceCopy
             }else{
-                payload.price = Number(payload.price.replace(/\s+/g, '').trim())
+                payload.price = typeof payload.price === 'number' ? payload.price : Number(payload.price.replace(/\s+/g, '').trim())
                 state.productsInfo[id] = {...payload, starterPrice: payload.price,count: 1, isAddedToCart: false}
             }
             state.totalCount+=1
