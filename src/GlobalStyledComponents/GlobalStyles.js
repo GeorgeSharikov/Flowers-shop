@@ -36,9 +36,6 @@ body {
   line-height: 1.5;
   color: #666;
 }
-body[style*="overflow: hidden"] {
-  margin-right: 17px;
-}
 ul{
 list-style: none;
 padding: 0px;

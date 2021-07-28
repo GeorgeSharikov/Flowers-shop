@@ -5,7 +5,7 @@ import * as s from '../HeaderStyles'
 export const MobileHeaderMenu = (props) => {
     const [isActive, setIsActive] = useState(false)
     useEffect(() => {
-        document.body.style.overflow = isActive ? 'hidden' : 'auto';
+        document.body.style.overflow = isActive ? 'hidden' : 'scroll';
     }, [isActive])
 
     return (

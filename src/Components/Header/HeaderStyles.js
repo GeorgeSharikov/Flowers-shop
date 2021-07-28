@@ -235,7 +235,7 @@ export const LinkList = styled.div`
     padding: 60px;
     top: 0;
     left: ${props => props.show ? '0' : '-200%'};
-    width: 100%;
+    width: 100%; 
     height: 100%;
     background-color: rgba(0,0,0,0.98);
     z-index: 10;
