@@ -18,7 +18,6 @@ export const CartItem = ({img, name, starterPrice, count, price, id}) => {
     const deleteProduct = (id) => {
         dispatch(deleteProductFromCart({id}))
     }
-    console.log('cart', price)
     return (
         <Container>
             <s.CartItemStyled>
