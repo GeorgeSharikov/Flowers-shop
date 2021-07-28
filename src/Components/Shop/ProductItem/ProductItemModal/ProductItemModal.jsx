@@ -8,7 +8,6 @@ import {useSelector} from "react-redux";
 
 export const ProductItemModal = ({ setIsActive, isActive, productLength}) => {
     const product = useSelector(state => selectChosenProduct(state)) || {}
-
     return(
         <PortalModal domNode={document.body} isActive={isActive}>
                 <s.ModalStyled isActive={isActive}>

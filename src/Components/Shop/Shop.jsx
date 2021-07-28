@@ -65,7 +65,7 @@ export const Shop = (props) => {
                             <img src={loading} alt={'loading'} width={'500px'} height={'500px'}/>
                         </s.loadingDiv>}
                         {productsList.slice(0, step).map(i => {
-                            return <ProductItem key={i.id} name={i.name} params={i.params} price={i.price} img={i.img} id={i.id} setIsActive={setIsActive}/>
+                            return <ProductItem key={i.id} rating={i.rating} name={i.name} params={i.params} price={i.price} img={i.img} id={i.id} setIsActive={setIsActive}/>
                         })}
                     </s.ProductListStyled>
             </s.ShopContentStyled>

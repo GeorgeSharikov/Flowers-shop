@@ -4,6 +4,7 @@ import {useClickOutside} from "../../../../Hooks/useClickOutside";
 import {ModalSlider} from "./ModalSlider";
 import {ModalButton} from "./ModalButton";
 import {ModalFooter} from "./ModalFooter";
+import {ModalRating} from "./ModalRating";
 
 export const ProductModalBody = ({product, setIsActive, isActive, productLength}) => {
     const ref = useRef()
@@ -36,6 +37,7 @@ export const ProductModalBody = ({product, setIsActive, isActive, productLength}
                     <s.ProductFullPriceModal>{product.price}₽</s.ProductFullPriceModal>
                 </s.ProductPriceModal>
                 <ModalButton product={product}/>
+                <ModalRating  id={product.id} />
             </s.BottomModalContent>
         </s.ModalContent>
          </s.ModalBodyTopContent>

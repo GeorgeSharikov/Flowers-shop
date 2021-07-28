@@ -3,10 +3,11 @@ import * as s from '../ShopStyles'
 import {ProductItemButton} from "./ProductItemButton";
 import {useDispatch} from "react-redux";
 import { getChosenProductAsync } from '../productsReducer';
+import {Rating} from "./Rating";
 
 
 export const ProductItem = (props) => {
-    const {name,params,price, img, id} = props
+    const {name,params,price, img, id, rating} = props
 
     const dispatch = useDispatch()
 
@@ -31,6 +32,7 @@ export const ProductItem = (props) => {
                     {params.height && <s.HeightParam>{params.height}</s.HeightParam>}
                     {params.weight && <s.WeightParam>{params.weight}</s.WeightParam>}
                 </div>
+                <Rating rating={rating}/>
             </s.ProductItemStyled>
         </>
     );
