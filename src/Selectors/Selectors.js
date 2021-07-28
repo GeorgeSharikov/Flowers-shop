@@ -41,3 +41,15 @@ export const selectStepScroll = (state) => {
 export const selectIsModalActive = (state) => {
     return state.products.isModalActive
 }
+
+export const selectRate = (state, id) => {
+    const allProducts = selectAllProduct(state)
+    const index = allProducts.findIndex(i => i.id === id)
+    return allProducts[index].rating
+}
+
+export const selectRateCount = (state, id) => {
+    const allProducts = selectAllProduct(state)
+    const index = allProducts.findIndex(i => i.id === id)
+    return allProducts[index].ratingCount
+}
