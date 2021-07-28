@@ -18,9 +18,20 @@ export const apiProducts = {
         }catch(err) {
             console.log(err)
         }
+    },
+    setChosenProduct: async (id, rate, rateCount) => {
+        try{
+            const product = await database.ref(`products/${id-1}`)
+            let ratingCount = rateCount + 1
+            product.update({
+                'ratingCount': ratingCount,
+                'rating': rate
+            })
+        }catch (err) {
+            console.log(err)
+        }
     }
 }
-
 export const SortsMethods = {
     priceHighToLow(products){
         let productCopy = products.map((i, index) => {
@@ -41,3 +52,7 @@ export const SortsMethods = {
         })
     },
 }
+
+
+
+
