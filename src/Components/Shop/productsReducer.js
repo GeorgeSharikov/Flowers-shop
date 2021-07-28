@@ -53,7 +53,9 @@ export const slice = createSlice({
             }
             state.chosenProduct = payload
         },
-
+        setSortByPopularity(state, {payload}){
+            state.currentSortCategory = state.sortCategories.popularity
+        },
         setSortByHighPRice(state, {payload}){
             state.currentSortCategory = state.sortCategories.priceHighToLow
             state.allProductList = sortsMethods.priceHighToLow(payload.products)
@@ -73,6 +75,12 @@ export const slice = createSlice({
         },
         setModalActive(state, {payload}){
             state.isModalActive = payload
+        },
+        setRating(state, {payload}){
+            const copyState = [...state.allProductList]
+            copyState[payload.index].ratingCount +=1
+            copyState[payload.index].rating = payload.newRating
+            state.allProductList = copyState
         }
     }
 })
@@ -83,6 +91,8 @@ export const {getAllProducts,
     setSortByLowPRice,
     setSortByHighPRice,
     setStepScroll,
+    setSortByPopularity,
+    setRating,
     setModalActive} = slice.actions
 
 export const getAllProductsAsync = () => async (dispatch, getState) => {
@@ -99,4 +109,11 @@ export const getChosenProductAsync = (id) => async (dispatch) => {
     dispatch(setModalActive(true))
 }
 
+export const setRatingToProduct = (id, newRate, rate, rateCount) => async (dispatch, getState) => {
+    let newRating = (rate * rateCount + newRate) / (rateCount+1)
+    newRating = Number(newRating.toFixed(2))
+    await apiProducts.setChosenProduct(id, newRating, rateCount)
+    const index = getState().products.allProductList.findIndex(i =>i.id === id)
+    dispatch(setRating({index, newRating}))
+}
 
