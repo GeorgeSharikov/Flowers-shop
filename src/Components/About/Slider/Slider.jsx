@@ -1,6 +1,6 @@
 import React from 'react'
-import slide1 from '../../../Assets/slide-1.png'
-import slide2 from '../../../Assets/slide-2.png'
+import slide1 from '../../../Assets/slide-1.webp'
+import slide2 from '../../../Assets/slide-2.webp'
 import * as s from '../AboutStyle'
 
 export const MainSlider = () => {
@@ -17,7 +17,7 @@ export const MainSlider = () => {
     return<div>
         <s.StyledSlider {...settings}>
            <div>
-                <img src={slide1} width="100%" height="629px" alt='slide'/>
+                <img src={slide1} width="100%"  alt='slide'/>
                 <s.SliderText>
                     <h1>Fresh flowers</h1>
                     <h6>Delivery of bouquets of flowers</h6>
@@ -30,7 +30,7 @@ export const MainSlider = () => {
                 </s.SliderText>
            </div>
            <div>
-               <img src={slide2} width="100%" height="629px" alt='slide'/>                
+               <img src={slide2} width="100%"  alt='slide'/>
                <s.SliderText>
                     <h1>Fresh flowers</h1>
                     <h6>Delivery of bouquets of flowers</h6>

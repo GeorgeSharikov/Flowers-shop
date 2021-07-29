@@ -55,6 +55,7 @@ export const slice = createSlice({
         },
         setSortByPopularity(state, {payload}){
             state.currentSortCategory = state.sortCategories.popularity
+            state.allProductList = sortsMethods.sortByPopularity(payload.products)
         },
         setSortByHighPRice(state, {payload}){
             state.currentSortCategory = state.sortCategories.priceHighToLow

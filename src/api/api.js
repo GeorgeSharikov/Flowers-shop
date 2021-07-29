@@ -51,6 +51,19 @@ export const SortsMethods = {
             return a.price - b.price
         })
     },
+    sortByPopularity(products){
+       if(products){
+           const productCopy = [...products]
+           let newCopy = productCopy.sort((a,b) => {
+               return b.rating - a.rating
+           })
+           return newCopy.sort((a,b) => {
+               if(a.rating === b.rating){
+                   return b.ratingCount - a.ratingCount
+               }
+           })
+       }
+    },
 }
 
 
