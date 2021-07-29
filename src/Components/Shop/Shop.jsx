@@ -3,7 +3,7 @@ import {FilterBar} from "./FilterBar/FilterBar";
 import {Container} from "../../GlobalStyledComponents/GlobalComponents";
 import {useDispatch, useSelector} from "react-redux";
 import * as s from './ShopStyles'
-import {getAllProductsAsync, setModalActive, setStepScroll} from "./productsReducer";
+import {getAllProductsAsync, setModalActive, setSortByPopularity, setStepScroll} from "./productsReducer";
 import {
     selectAllProduct,
     selectCurrentCategory,
@@ -51,11 +51,14 @@ export const Shop = (props) => {
         if(productsList.length === 0 ){
             dispatch(getAllProductsAsync())
         }
+        if(currentSortCategory === 'Popularity' && productsList.length > 0){
+            dispatch(setSortByPopularity({products:productsList}))
+        }
         document.addEventListener('scroll', scrollHandler)
         return () => {
             document.removeEventListener('scroll', scrollHandler)
         }
-    }, [dispatch, productsList.length, scrollHandler])
+    }, [dispatch, productsList.length, scrollHandler, currentSortCategory])
     return (
         <Container>
             <s.ShopContentStyled>
@@ -65,7 +68,15 @@ export const Shop = (props) => {
                             <img src={loading} alt={'loading'} width={'500px'} height={'500px'}/>
                         </s.loadingDiv>}
                         {productsList.slice(0, step).map(i => {
-                            return <ProductItem key={i.id} rating={i.rating} name={i.name} params={i.params} price={i.price} img={i.img} id={i.id} setIsActive={setIsActive}/>
+                            return <ProductItem key={i.id}
+                                                ratingCount={i.ratingCount}
+                                                rating={i.rating}
+                                                name={i.name}
+                                                params={i.params}
+                                                price={i.price}
+                                                img={i.img}
+                                                id={i.id}
+                                                setIsActive={setIsActive}/>
                         })}
                     </s.ProductListStyled>
             </s.ShopContentStyled>
@@ -73,3 +84,4 @@ export const Shop = (props) => {
         </Container>
     );
 }
+

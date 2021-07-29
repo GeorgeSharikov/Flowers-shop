@@ -28,6 +28,7 @@ export const ModalRating = ( {id}) => {
                 name='rating'/>
              <span>{rating}</span>
          </s.Rating>
+        <p>Based on {rateCount} reviews</p>
     </s.ModalRate>
 
     )

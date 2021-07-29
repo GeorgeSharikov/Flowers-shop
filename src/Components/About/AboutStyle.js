@@ -67,6 +67,14 @@ export const SliderText = styled.div`
         color:#666;
         font-size: 18px;
     }
+    @media(max-width: 885px){
+      p, h6{
+        display: none;
+      }
+      h1{
+        margin-bottom: 20px;
+      }
+    }
 `
 
 export const SliderButton = styled.div`
@@ -94,11 +102,32 @@ export const BonusesBody = styled.div`
   background-color: white;
   position: relative;
   display: flex;
- justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: -65px;
   z-index: 9;
   border: 1px solid #f0f0f0;
-  width: 100%;
+  @media(max-width: 1145px){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  @media(max-width: 1050px){
+    margin-top: -0px;
+  }
+  @media(max-width: 885px){
+    margin-top: -65px;
+  }
+  @media(max-width: 700px){
+    margin-top: 0;
+  }
+  @media(max-width: 627px){
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    width: 252px;
+    margin: 0 auto;
+    border: none;
+  }
 `
 
 export const StyledBonusItem = styled.div`
@@ -107,6 +136,10 @@ export const StyledBonusItem = styled.div`
   p{
     padding-left: 10px;
     font-size: 18px;
+  }
+  @media(max-width: 627px){
+    border: 1px solid black;
+    margin-bottom: 7px;
   }
 `
 
@@ -122,18 +155,10 @@ export const PopularTittle = styled.h1`
 `
 
 export const PopularProductsWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4 ,1fr);
-  justify-items: center;
-  grid-gap: 25px;
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: 100px;
-  @media(max-width: 1180px){
-    grid-template-columns: repeat(2 ,1fr);
-  }
-   @media(max-width: 672px){
-  
-    grid-template-columns: repeat(2 ,1fr);
-  }
+  justify-content: space-evenly;
 `
 
 
@@ -146,6 +171,7 @@ export const ProductCart = styled.div`
   transition: all 0.5s ease;
   position: relative;
   z-index: 100;
+  margin: 15px;
   .btn{
     opacity: 0;
     visibility: hidden;

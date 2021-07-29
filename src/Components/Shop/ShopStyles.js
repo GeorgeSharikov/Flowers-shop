@@ -513,6 +513,13 @@ align-items: baseline;
       position: absolute;
       right: 43px;
       top: 6px;
+      //padding-right: ${props => props.length >= 2 ? '10px': '5px'};
+    }
+    sup{
+      position: absolute;
+      right: 15px;
+      top: 22px;
+      white-space: nowrap;
     }
 `
 

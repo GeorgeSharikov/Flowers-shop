@@ -7,7 +7,7 @@ import {Rating} from "./Rating";
 
 
 export const ProductItem = (props) => {
-    const {name,params,price, img, id, rating} = props
+    const {name,params,price, img, id, rating, ratingCount} = props
 
     const dispatch = useDispatch()
 
@@ -15,7 +15,7 @@ export const ProductItem = (props) => {
        await dispatch(getChosenProductAsync(id))
     }
    const productPrice = typeof price === 'string' ? `${price} ₽` : price.toLocaleString('ru', {style: 'currency', currency: 'RUB', maximumFractionDigits: 0})
-    return (
+   return (
         <>
             <s.ProductItemStyled onClick={() => getChosenProduct(id)} >
                 <s.ProductImg src={img} alt={'flower'} width={'240px'} height={'272px'}/>
@@ -32,7 +32,7 @@ export const ProductItem = (props) => {
                     {params.height && <s.HeightParam>{params.height}</s.HeightParam>}
                     {params.weight && <s.WeightParam>{params.weight}</s.WeightParam>}
                 </div>
-                <Rating rating={rating}/>
+                <Rating rating={rating} ratingCount={ratingCount}/>
             </s.ProductItemStyled>
         </>
     );
