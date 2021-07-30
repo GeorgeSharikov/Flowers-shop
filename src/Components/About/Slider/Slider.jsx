@@ -17,7 +17,7 @@ export const MainSlider = () => {
     return<div>
         <s.StyledSlider {...settings}>
            <div>
-                <img src={slide1} width="100%"  alt='slide'/>
+                <img src={slide1} width="100%" height='700px' alt='slide'/>
                 <s.SliderText>
                     <h1>Fresh flowers</h1>
                     <h6>Delivery of bouquets of flowers</h6>

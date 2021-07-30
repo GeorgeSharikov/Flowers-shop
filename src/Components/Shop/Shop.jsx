@@ -58,6 +58,7 @@ export const Shop = (props) => {
         return () => {
             document.removeEventListener('scroll', scrollHandler)
         }
+        // eslint-disable-next-line
     }, [dispatch, productsList.length, scrollHandler, currentSortCategory])
     return (
         <Container>

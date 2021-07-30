@@ -7,6 +7,11 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from 'react-redux'
 import { store } from './store/store';
 
+if(!!!document.cookie){
+    let date = new Date(Date.now() + 86400e3);
+    date = date.toUTCString();
+    document.cookie = "visited=true; expires=" + date;
+}
 
 ReactDOM.render(
     <Provider store={store}>

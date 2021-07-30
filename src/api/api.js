@@ -60,11 +60,14 @@ export const SortsMethods = {
            return newCopy.sort((a,b) => {
                if(a.rating === b.rating){
                    return b.ratingCount - a.ratingCount
+               }else {
+                   return 0
                }
            })
        }
     },
 }
+
 
 
 

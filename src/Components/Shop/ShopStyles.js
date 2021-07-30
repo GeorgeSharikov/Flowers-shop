@@ -540,3 +540,4 @@ export const Rating = styled.div`
   display: flex;
   align-items: flex-start;
 `
+
