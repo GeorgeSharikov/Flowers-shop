@@ -68,16 +68,8 @@ export const Shop = (props) => {
                         {isFetching && <s.loadingDiv>
                             <img src={loading} alt={'loading'} width={'500px'} height={'500px'}/>
                         </s.loadingDiv>}
-                        {productsList.slice(0, step).map(i => {
-                            return <ProductItem key={i.id}
-                                                ratingCount={i.ratingCount}
-                                                rating={i.rating}
-                                                name={i.name}
-                                                params={i.params}
-                                                price={i.price}
-                                                img={i.img}
-                                                id={i.id}
-                                                setIsActive={setIsActive}/>
+                        {productsList?.slice(0, step).map((i, index) => {
+                            return <ProductItem key={i.id} product={productsList[index]}/>
                         })}
                     </s.ProductListStyled>
             </s.ShopContentStyled>
