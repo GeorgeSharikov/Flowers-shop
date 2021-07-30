@@ -4,10 +4,11 @@ import {ProductItemButton} from "./ProductItemButton";
 import {useDispatch} from "react-redux";
 import { getChosenProductAsync } from '../productsReducer';
 import {Rating} from "./Rating";
+import {FavoriteButton} from "./ProductItemModal/FavoriteButton";
 
 
-export const ProductItem = (props) => {
-    const {name,params,price, img, id, rating, ratingCount} = props
+export const ProductItem = ({product}) => {
+    const {name,params,price, img, id, rating, ratingCount} = product
 
     const dispatch = useDispatch()
 
@@ -26,13 +27,14 @@ export const ProductItem = (props) => {
                 <s.ProductNameWrapper>
                     <s.ProductName>{name}</s.ProductName>
                 </s.ProductNameWrapper>
-                <ProductItemButton info={props}/>
+                <ProductItemButton info={product}/>
                 <div className={'product-params'} onClick={(e) => e.stopPropagation()}>
                     {params.diameter && <s.DiameterParam>{params.diameter}</s.DiameterParam>}
                     {params.height && <s.HeightParam>{params.height}</s.HeightParam>}
                     {params.weight && <s.WeightParam>{params.weight}</s.WeightParam>}
                 </div>
                 <Rating rating={rating} ratingCount={ratingCount}/>
+                <FavoriteButton id={id} product={product}/>
             </s.ProductItemStyled>
         </>
     );

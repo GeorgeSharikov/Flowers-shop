@@ -420,6 +420,29 @@ export const ProductLinkButtonModal = styled(ProductLinkButton)`
   width: 100%;
 `
 
+export const FavoriteButtonStyled = styled.button`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: inherit;
+  line-height: 1.05;
+  right: 10px;
+  top: 40px;
+  span{
+     font-size: 0;
+  }
+`
+
 
 export const ToggleModal = styled.div`
   display: flex;

@@ -8,13 +8,15 @@ import { About } from './Components/About/About';
 import {Shop} from "./Components/Shop/Shop";
 import {Cart} from "./Components/Cart/Cart";
 import {NotFound} from "./Components/NotFound/NotFound";
+import {OverHeader} from "./Components/Overheader/overheader";
 
 const AppWrapper = styled.div`
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-rows: 216px 1fr auto;
+    grid-template-rows: 44px 216px 1fr auto;
     grid-template-areas: 
+    'overHeader'
     'header'
     'content'
     'footer'; 
@@ -29,6 +31,7 @@ const ContentWrapper = styled.div`
 export const App = () => {
   return (
     <AppWrapper>
+        <OverHeader />
         <Header/>
         <Switch>
             <ContentWrapper>
