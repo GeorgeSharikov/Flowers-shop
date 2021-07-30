@@ -1,21 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {apiProducts, SortsMethods as sortsMethods} from '../../api/api';
 
+const initialState = JSON.parse(localStorage.getItem('store'))?.products || {
+    allProductList: [],
+    isFetching: true,
+    chosenProduct: null,
+    sortCategories: {
+        popularity: 'Popularity',
+        priceHighToLow: 'Price: high to low',
+        priceLowToHigh: 'Price: low to high',
+    },
+    currentSortCategory: null,
+    stepScroll: 8,
+    isModalActive: false
+}
+
 export const slice = createSlice({
     name: 'products',
-    initialState: {
-        allProductList: [],
-        isFetching: true,
-        chosenProduct: null,
-        sortCategories: {
-            popularity: 'Popularity',
-            priceHighToLow: 'Price: high to low',
-            priceLowToHigh: 'Price: low to high',
-        },
-        currentSortCategory: null,
-        stepScroll: 8,
-        isModalActive: false
-    },
+    initialState: initialState,
     reducers: {
         //change params structure from string to object
         getAllProducts(state, {payload}){
