@@ -53,3 +53,7 @@ export const selectRateCount = (state, id) => {
     const index = allProducts.findIndex(i => i.id === id)
     return allProducts[index].ratingCount
 }
+
+export const selectFavoriteCount = (state) => {
+    return state.favoritesProducts.count
+}

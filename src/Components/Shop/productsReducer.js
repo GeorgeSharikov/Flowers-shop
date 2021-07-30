@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {apiProducts, SortsMethods as sortsMethods} from '../../api/api';
 
-const initialState = JSON.parse(localStorage.getItem('store'))?.products || {
+ const initialState = JSON.parse(localStorage.getItem('store'))?.products || {
     allProductList: [],
     isFetching: true,
     chosenProduct: null,
@@ -14,7 +14,7 @@ const initialState = JSON.parse(localStorage.getItem('store'))?.products || {
     stepScroll: 8,
     isModalActive: false
 }
-
+console.log(initialState)
 export const slice = createSlice({
     name: 'products',
     initialState: initialState,
