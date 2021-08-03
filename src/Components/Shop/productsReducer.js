@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {apiProducts, SortsMethods as sortsMethods} from '../../api/api';
 
+
  const initialState = JSON.parse(localStorage.getItem('store'))?.products || {
     allProductList: [],
     isFetching: true,
@@ -12,9 +13,10 @@ import {apiProducts, SortsMethods as sortsMethods} from '../../api/api';
     },
     currentSortCategory: null,
     stepScroll: 8,
-    isModalActive: false
+    isModalActive: false,
+    ratedProducts: {},
+    userRateToEachProduct: {}
 }
-console.log(initialState)
 export const slice = createSlice({
     name: 'products',
     initialState: initialState,
@@ -80,10 +82,38 @@ export const slice = createSlice({
             state.isModalActive = payload
         },
         setRating(state, {payload}){
+            const id = payload.id
+
             const copyState = [...state.allProductList]
             copyState[payload.index].ratingCount +=1
             copyState[payload.index].rating = payload.newRating
             state.allProductList = copyState
+
+            state.ratedProducts[id] = true
+            state.userRateToEachProduct[id] = payload.userRating
+        },
+        deleteRating(state, {payload}){
+            const id = payload.id
+            const index = payload.index
+            const newRating = payload.newRating
+            const newRatingCount = payload.newRatingCount
+
+            const copyState = [...state.allProductList]
+            copyState[index].rating = newRating
+            copyState[index].ratingCount = newRatingCount
+            state.allProductList = copyState
+
+            state.ratedProducts[id] = false
+            state.userRateToEachProduct[id] = 0
+        },
+        changeRating(state, {payload}){
+            const id = payload.id
+
+            const copyState = [...state.allProductList]
+            copyState[payload.index].rating = payload.newRating
+            state.allProductList = copyState
+
+            state.userRateToEachProduct[id] = payload.userRating
         }
     }
 })
@@ -95,7 +125,9 @@ export const {getAllProducts,
     setSortByHighPRice,
     setStepScroll,
     setSortByPopularity,
+    deleteRating,
     setRating,
+    changeRating,
     setModalActive} = slice.actions
 
 export const getAllProductsAsync = () => async (dispatch, getState) => {
@@ -112,11 +144,29 @@ export const getChosenProductAsync = (id) => async (dispatch) => {
     dispatch(setModalActive(true))
 }
 
-export const setRatingToProduct = (id, newRate, rate, rateCount) => async (dispatch, getState) => {
+export const setRatingToProductAsync = (id, newRate, rate, rateCount) => async (dispatch, getState) => {
     let newRating = (rate * rateCount + newRate) / (rateCount+1)
     newRating = Number(newRating.toFixed(2))
     await apiProducts.setChosenProduct(id, newRating, rateCount)
     const index = getState().products.allProductList.findIndex(i =>i.id === id)
-    dispatch(setRating({index, newRating}))
+    dispatch(setRating({index, newRating, id, userRating: newRate}))
+}
+
+export const deleteUserRatingToProductAsync = (rating, userRate, ratingCount, id) => async (dispatch, getState) => {
+     let newRating = ratingCount>1 ? (rating * ratingCount - userRate) / (ratingCount - 1) : 0
+     newRating = Number(newRating.toFixed(2))
+     const newRatingCount = ratingCount - 1
+     const index = getState().products.allProductList.findIndex(i =>i.id === id)
+     await apiProducts.deleteUserRatingToProduct(id, newRating, newRatingCount)
+     dispatch(deleteRating({id, newRating, newRatingCount, index}))
+}
+
+export const editRatingToProductAsync = (oldUserRate, newRate, id, ratingCount, rating) => async (dispatch, getState) => {
+    let newRating = ratingCount>1 ? (rating * ratingCount - oldUserRate) / (ratingCount - 1) : newRate
+    newRating = ratingCount>1  ? (newRating + newRate) / ratingCount : newRate
+    newRating = Number(newRating.toFixed(2))
+    await apiProducts.changeUserRatingToProduct(id, newRating)
+    const index = getState().products.allProductList.findIndex(i =>i.id === id)
+    dispatch(changeRating({index, newRating, id, userRating: newRate}))
 }
 
