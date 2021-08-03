@@ -9,6 +9,7 @@ import {Shop} from "./Components/Shop/Shop";
 import {Cart} from "./Components/Cart/Cart";
 import {NotFound} from "./Components/NotFound/NotFound";
 import {OverHeader} from "./Components/Overheader/overheader";
+import {Favorites} from "./Components/Favorites/favorites";
 
 const AppWrapper = styled.div`
     width: 100%;
@@ -42,6 +43,7 @@ export const App = () => {
                 <Route path={'/Gallery'} render={() => <NotFound />}/>
                 <Route path={'/Blog'} render={() => <NotFound />}/>
                 <Route path={'/Help'} render={() => <NotFound />}/>
+                <Route path={'/Favorites'} render={() => <Favorites />}/>
             </ContentWrapper>
         </Switch>
         <Footer/>
