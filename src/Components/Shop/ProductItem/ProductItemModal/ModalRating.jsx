@@ -1,44 +1,87 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import StarRatings from "react-star-ratings";
 import * as s from '../../ShopStyles'
+import trash from '../../../../Assets/trash.svg'
+import edit from '../../../../Assets/edit.png'
 import {useDispatch, useSelector} from "react-redux";
-import {setRatingToProduct} from "../../productsReducer";
-import {selectRate, selectRateCount} from "../../../../Selectors/Selectors";
-import {getCookie} from "../../../../Utils/cookie";
+import {deleteUserRatingToProductAsync, editRatingToProductAsync, setRatingToProductAsync} from "../../productsReducer";
+import {
+    selectIsProductRated,
+    selectRate,
+    selectRateCount,
+    selectUserRatingToProduct
+} from "../../../../Selectors/Selectors";
 
 export const ModalRating = ( {id}) => {
     const dispatch = useDispatch()
     const rating = useSelector(state => selectRate(state, id))
     const rateCount = useSelector(state => selectRateCount(state, id))
-    const [rate, setRate ] = useState(rating)
-    const setRatingFunction = (val) => {
-        dispatch(setRatingToProduct(id, val, rating, rateCount))
-    }
-    useEffect(() => {
-        setRate(rating)
-    }, [rating])
-    const cookie = getCookie(id.toString())
-    return (
-    <s.ModalRate>
-        <h1>{!cookie ? 'Rate the product' : 'Thank you for rating'}</h1>
-        <s.Rating>
-            <StarRatings
-                rating={Number(rate)}
-                starRatedColor="#fde16d"
-                changeRating={!cookie ? (val) => {
-                        setRatingFunction(val)
-                        let UTCDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toUTCString();
-                        document.cookie = `${id.toString()}=true; expires=${UTCDate}`
-                } : null}
-                numberOfStars={5}
-                starHoverColor={"#fde16d"}
-                starDimension={'40px'}
-                starSpacing={'3px'}
-                name='rating'/>
-             <span>{rating}</span>
-         </s.Rating>
-        <p>Based on {rateCount} reviews</p>
-    </s.ModalRate>
+    const isRated = useSelector(state => selectIsProductRated(state, id ))
+    const userRate = useSelector(state => selectUserRatingToProduct(state, id))
 
+    const [editMode, setEditMode] = useState(false)
+
+    const editRatingHandler = (val) => {
+        dispatch(editRatingToProductAsync(userRate, val, id, rateCount, rating))
+        setEditMode(!editMode)
+    }
+
+    const deleteUserRating = () => {
+        dispatch(deleteUserRatingToProductAsync(rating, userRate, rateCount, id))
+    }
+
+    const setRatingFunction = (val) => {
+        if(!isRated){
+            dispatch(setRatingToProductAsync(id, val, rating, rateCount))
+        }
+    }
+
+    return (
+        <s.ModalRate>
+            {!isRated
+                ? <h1>Rate the product</h1>
+                : <s.RatingTitleWrapper>
+                    <h1>Thank you for rating</h1>
+
+                    <s.RatingButton onClick={deleteUserRating} title="Delete rating">
+                        <img src={trash} alt={'delete rating'}/>
+                    </s.RatingButton>
+
+                    <s.RatingButton title="Edit rating" onClick={() => setEditMode(!editMode)}>
+                        <img src={edit} alt={'edit rating'}/>
+                    </s.RatingButton>
+                </s.RatingTitleWrapper>}
+            <s.Rating>
+                {isRated && !editMode && <StarRatings
+                    rating={Number(rating)}
+                    starRatedColor="#fde16d"
+                    changeRating={console.log()}
+                    numberOfStars={5}
+                    starHoverColor={"#fde16d"}
+                    starDimension={'40px'}
+                    starSpacing={'3px'}
+                    name='rating'/>}
+                {!isRated && <StarRatings
+                    rating={Number(rating)}
+                    starRatedColor="#fde16d"
+                    changeRating={setRatingFunction}
+                    numberOfStars={5}
+                    starHoverColor={"#fde16d"}
+                    starDimension={'40px'}
+                    starSpacing={'3px'}
+                    name='rating'/>}
+                {editMode && <StarRatings
+                    rating={Number(rating)}
+                    starRatedColor="#fde16d"
+                    changeRating={editRatingHandler}
+                    numberOfStars={5}
+                    starHoverColor={"#fde16d"}
+                    starDimension={'40px'}
+                    starSpacing={'3px'}
+                    name='rating'/>}
+                 <span>{rating}</span>
+             </s.Rating>
+            {editMode ? <p>Please, change your rating</p> : <p>Based on {rateCount} reviews</p>}
+        </s.ModalRate>
     )
 }
