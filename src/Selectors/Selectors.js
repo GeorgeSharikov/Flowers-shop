@@ -57,3 +57,19 @@ export const selectRateCount = (state, id) => {
 export const selectFavoriteCount = (state) => {
     return state.favoritesProducts.count
 }
+
+export const selectIsAddedToFavorites = (state, id) => {
+    return state.favoritesProducts.addedFavoritesProducts?.[id] || false
+}
+
+export const selectIsProductRated = (state, id) => {
+    return state.products.ratedProducts?.[id] || false
+}
+
+export const selectUserRatingToProduct = (state, id) => {
+    return state.products.userRateToEachProduct?.[id] || 0
+}
+
+export const selectFavoritesProducts = (state) => {
+    return state.favoritesProducts.favoritesProducts
+}
