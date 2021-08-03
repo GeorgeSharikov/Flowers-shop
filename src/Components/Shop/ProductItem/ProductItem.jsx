@@ -7,8 +7,9 @@ import {Rating} from "./Rating";
 import {FavoriteButton} from "./ProductItemModal/FavoriteButton";
 
 
-export const ProductItem = ({product}) => {
+export const ProductItem = ({product, isInFavorite}) => {
     const {name,params,price, img, id, rating, ratingCount} = product
+
 
     const dispatch = useDispatch()
 
@@ -18,7 +19,7 @@ export const ProductItem = ({product}) => {
    const productPrice = typeof price === 'string' ? `${price} ₽` : price.toLocaleString('ru', {style: 'currency', currency: 'RUB', maximumFractionDigits: 0})
    return (
         <>
-            <s.ProductItemStyled onClick={() => getChosenProduct(id)} >
+            <s.ProductItemStyled onClick={() => getChosenProduct(id)}>
                 <s.ProductImg src={img} alt={'flower'} width={'240px'} height={'272px'}/>
                 <s.ProductPriceStyled onClick={(e) => e.stopPropagation()}>
                     <s.PriceWord>Price:</s.PriceWord>
@@ -34,7 +35,7 @@ export const ProductItem = ({product}) => {
                     {params.weight && <s.WeightParam>{params.weight}</s.WeightParam>}
                 </div>
                 <Rating rating={rating} ratingCount={ratingCount}/>
-                <FavoriteButton id={id} product={product}/>
+                <FavoriteButton id={id} product={product} isInFavorite={isInFavorite}/>
             </s.ProductItemStyled>
         </>
     );

@@ -69,7 +69,7 @@ export const Shop = (props) => {
                             <img src={loading} alt={'loading'} width={'500px'} height={'500px'}/>
                         </s.loadingDiv>}
                         {productsList?.slice(0, step).map((i, index) => {
-                            return <ProductItem key={i.id} product={productsList[index]}/>
+                            return <ProductItem key={i.id} product={productsList[index]} isInFavorite={false}/>
                         })}
                     </s.ProductListStyled>
             </s.ShopContentStyled>

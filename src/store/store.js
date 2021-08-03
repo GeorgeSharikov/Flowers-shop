@@ -18,7 +18,8 @@ store.subscribe(() => {
     localStorage.setItem('store', JSON.stringify(store.getState()))
 })
 
-
+// deleteCookie('store')
+// deleteCookie('12')
 
 
 
