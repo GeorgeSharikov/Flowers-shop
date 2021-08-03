@@ -30,6 +30,27 @@ export const apiProducts = {
         }catch (err) {
             console.log(err)
         }
+    },
+    deleteUserRatingToProduct: async (id, newRate, newRatingCount) => {
+        try{
+            const product = await database.ref(`products/${id-1}`)
+            product.update({
+                'rating': newRate,
+                'ratingCount': newRatingCount
+            })
+        }catch(err){
+            console.log(err)
+        }
+    },
+    changeUserRatingToProduct: async (id, rate) => {
+        try{
+            const product = await database.ref(`products/${id-1}`)
+            product.update({
+                'rating': rate
+            })
+        }catch (err) {
+            console.log(err)
+        }
     }
 }
 export const SortsMethods = {
@@ -69,6 +90,14 @@ export const SortsMethods = {
 }
 
 
-
-
+// const a = async () => {
+//     for(let i = 0; i<24; i++){
+//         const product = await database.ref(`products/${i}`)
+//         product.update({
+//             'rating': 0,
+//             'ratingCount': 0
+//         })
+//     }
+// }
+// a()
 
