@@ -11,6 +11,10 @@ import heightModal from '../../Assets/height-modal.svg'
 export const ShopContentStyled = styled.div`
   padding-top: 25px;
   padding-bottom: 100px;
+  h1{
+    font-size: 25px;
+    color: black;
+  }
 `
 
 export const ProductListStyled = styled.div`
@@ -45,6 +49,9 @@ export const ProductItemStyled = styled.div`
   align-content: center;
   box-sizing: border-box;
   padding: 16px 0px;
+  
+  visibility: visible;
+  opacity: 1;
   transition: box-shadow .2s linear;
   .product-button{
     position: absolute;
@@ -564,3 +571,17 @@ export const Rating = styled.div`
   align-items: flex-start;
 `
 
+export const RatingTitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const RatingButton = styled.div`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin-left: 5px;
+  background-color: transparent;  
+`
