@@ -21,8 +21,13 @@ export const HeaderSearch = ({width}) => {
     const ref = useRef()
     const [inputValue, setInputValue] = useState('')
     const [filteredProducts, setFilteredProducts] = useState([])
-    const products = useSelector(state => selectAllProduct(state))
+    const [products, setProducts] = useState([])
+    const productsList = useSelector(state => selectAllProduct(state))
     const debouncedSearchTerm = useDebounce(inputValue, 200)
+
+    if(!products.length){
+        setProducts(productsList)
+    }
 
     useClickOutside(ref, () => {
         setFilteredProducts([])

@@ -13,8 +13,9 @@ import {Favorites} from "./Components/Favorites/favorites";
 
 const AppWrapper = styled.div`
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: grid;
+    box-sizing: border-box;
     grid-template-rows: 44px 216px 1fr auto;
     grid-template-areas: 
     'overHeader'

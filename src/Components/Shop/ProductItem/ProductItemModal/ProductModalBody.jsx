@@ -17,7 +17,8 @@ export const ProductModalBody = ({product, setIsActive, isActive, productLength}
         <ModalSlider product={product}/>
         <s.ModalContent>
             <s.TopModalContent>
-                <h1>Bouquet <br/>«{product.name}»</h1>
+                {product.name.length > 30 ? <h2>Bouquet <br/>«{product.name}»</h2> : <h1>Bouquet <br/>«{product.name}»</h1>}
+                
                 <h3>Description</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     A assumenda commodi eius esse excepturi, facere fugit laborum obcaecati odio odit perspiciatis
@@ -36,7 +37,7 @@ export const ProductModalBody = ({product, setIsActive, isActive, productLength}
                     <s.PriceWordModal>Price:</s.PriceWordModal>
                     <s.ProductFullPriceModal>{product.price}₽</s.ProductFullPriceModal>
                 </s.ProductPriceModal>
-                <ModalButton product={product}/>
+                <ModalButton product={product} setIsActive={setIsActive}/>
                 <ModalRating  id={product.id} />
             </s.BottomModalContent>
         </s.ModalContent>

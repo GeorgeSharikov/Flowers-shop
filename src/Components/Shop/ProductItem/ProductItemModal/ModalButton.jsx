@@ -4,11 +4,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectIsAddedToCart} from "../../../../Selectors/Selectors";
 import {addProductToCart, setIsAddedToCart} from "../../../Cart/cartReducer";
 
-export const ModalButton = ({product}) => {
+export const ModalButton = ({product, setIsActive}) => {
     const {name, price, img, id} = product
     const dispatch = useDispatch()
 
     const isAddedToCart = useSelector(state => selectIsAddedToCart(state,id))
+
+    const goToCartHandler = () => {
+        setIsActive(false)
+        document.body.style.overflow = 'scroll'
+    }
 
     const additionProductToCart = (name, price, img, id) => {
         if(!isAddedToCart){
@@ -18,7 +23,7 @@ export const ModalButton = ({product}) => {
     }
     return (
         <s.ButtonModalCart isAddedToCart={isAddedToCart} onClick={(e) => additionProductToCart(name, price, img, id, e)} >
-            {isAddedToCart ? <s.ProductLinkButtonModal to={'/cart'}>Go to cart</s.ProductLinkButtonModal> : 'add to cart'}
+            {isAddedToCart ? <s.ProductLinkButtonModal to={'/cart'} onClick={goToCartHandler}>Go to cart</s.ProductLinkButtonModal> : 'add to cart'}
         </s.ButtonModalCart>
     );
 }

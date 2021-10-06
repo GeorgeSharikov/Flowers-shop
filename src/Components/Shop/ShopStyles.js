@@ -373,7 +373,7 @@ export const TopModalContent = styled.div`
     padding-bottom: 25px;
     border-bottom: 1px solid #ddd;
     margin-bottom: 10px;
-    h1{
+    h1, h2{
     line-height: 1;
     font-size: 25px;
     margin-top: .2em;

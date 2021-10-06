@@ -13,7 +13,7 @@ export const ModalSlider = ({product}) => {
         <div>
             <s.StyledSlider {...settings}>
                 <div>
-                    <img src={product.largePhoto} alt={'flower'}/>
+                    <img src={product.largePhoto} alt={'flower'} widtrh={'480'} height={'640'}/>
                     <s.HeightModal>{product.params?.height}</s.HeightModal>
                     <s.DiameterModal>Ø {product.params?.diameter}</s.DiameterModal>
                 </div>
