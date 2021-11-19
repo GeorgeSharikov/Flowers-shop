@@ -6,7 +6,7 @@ const __dirname = path.resolve()
 const PORT = process.env.PORT || 3000
 const app = express()
 
-app.use(express.static("client/build"))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
