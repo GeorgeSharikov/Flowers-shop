@@ -18,6 +18,7 @@
     "react-slick": "^0.28.1",
     "react-star-ratings": "^2.3.0",
     "reselect": "^4.0.0",
+    "server": "file:..",
     "styled-components": "^5.2.3",
     "web-vitals": "^1.1.1"
   },
@@ -56,5 +57,5 @@
   "bugs": {
     "url": "https://github.com/GeorgeSharikov/Flowers-shop/issues"
   },
-  "homepage": "http://localhost/"
+  "homepage": "."
 }
