@@ -10,7 +10,10 @@ const app = express()
 
 app.use('https://my-pet-project-flowers-shop.herokuapp.com/', express.static( path.join(__dirname, "client", "build")))
 app.get('*', function (req, res) {
-  res.sendFile("index.html", {root});
+  if (req.method === 'GET' && req.accepts('html') && !req.is('json') && !req.path.includes('.')) {
+    res.sendFile('index.html', { root })
+  }
+  // res.sendFile("index.html", {root});
 });
 
 app.listen(PORT, () => console.log('listening...'))
