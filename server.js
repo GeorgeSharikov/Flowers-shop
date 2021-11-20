@@ -7,8 +7,8 @@ const root = path.join(__dirname, "client", "build",)
 const PORT = process.env.PORT || 3000
 
 const app = express()
-console.log(path.join(__dirname, "client", "build"))
-app.use('https://my-pet-project-flowers-shop.herokuapp.com/', express.static(path.join(__dirname, "client", "build")))
+
+app.use(express.static(path.join(__dirname, "client", "build")))
 app.get('*', function (req, res) {
   if (req.method === 'GET' && req.accepts('html') && !req.is('json') && !req.path.includes('.')) {
     res.sendFile('index.html', { root })
