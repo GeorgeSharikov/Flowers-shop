@@ -46,6 +46,7 @@ export const HeaderSearch = ({width}) => {
         setFilteredProducts(filteredProducts)
     }, [debouncedSearchTerm, products, inputValue])
     return (
+        // <></>
         <s.SearchBar width={width}>
                 <s.PhoneNumber >
                     <CallOutlined style={styles}/>
@@ -54,7 +55,7 @@ export const HeaderSearch = ({width}) => {
                         +7(909)-666-66-66                        
                     </div>
                 </s.PhoneNumber>
-                <s.SearchIcon>
+               <s.SearchIcon>
                     {width>580 ? null : <SearchOutlined style={stylesSearch}/>}
                 </s.SearchIcon>
                 <s.Form onClick={(e) => e.preventDefault()}>
@@ -71,11 +72,11 @@ export const HeaderSearch = ({width}) => {
                                 </s.SearchListLink>
                             </li>
                         })}
-                    </s.SearchList> : null}
-                    <s.Button>
+                    </s.SearchList> : null} 
+                     <s.Button>
                             <SearchOutlined style={stylesSearch}/>              
                     </s.Button>
-                </s.Form>
+                </s.Form> 
         </s.SearchBar>
     );
 }
