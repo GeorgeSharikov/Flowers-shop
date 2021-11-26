@@ -5,6 +5,7 @@ export const apiProducts = {
         try{
             const productsList = await database.ref('products')
             const productsListData =  await productsList.get()
+            console.log('getAllProducts', typeof productsListData.val())
             return productsListData.val()
         }catch(err) {
             console.log(err)
@@ -14,6 +15,7 @@ export const apiProducts = {
         try{
             const product = await database.ref(`products/${id-1}`)
             const productData = await product.get()
+            console.log('getChosenProduct', typeof productData.val())
             return productData.val()
         }catch(err) {
             console.log(err)

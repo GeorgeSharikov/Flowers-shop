@@ -21,13 +21,13 @@ export const HeaderSearch = ({width}) => {
     const ref = useRef()
     const [inputValue, setInputValue] = useState('')
     const [filteredProducts, setFilteredProducts] = useState([])
-    const [products, setProducts] = useState([])
     const productsList = useSelector(state => selectAllProduct(state))
+    const [products, setProducts] = useState(productsList)
     const debouncedSearchTerm = useDebounce(inputValue, 200)
 
-    if(!products.length){
-        setProducts(productsList)
-    }
+    // if(!products.length){
+        // setProducts(productsList)
+    // }
 
     useClickOutside(ref, () => {
         setFilteredProducts([])
@@ -46,7 +46,6 @@ export const HeaderSearch = ({width}) => {
         setFilteredProducts(filteredProducts)
     }, [debouncedSearchTerm, products, inputValue])
     return (
-        // <></>
         <s.SearchBar width={width}>
                 <s.PhoneNumber >
                     <CallOutlined style={styles}/>
