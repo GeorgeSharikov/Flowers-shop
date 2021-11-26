@@ -16,4 +16,4 @@ app.get('*', function (req, res) {
   // res.sendFile("index.html", {root});
 });
 
-app.listen(PORT, () => console.log('listening...'))
+app.listen(PORT, () => console.log('liste ning...'))
